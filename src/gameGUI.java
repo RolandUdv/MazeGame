@@ -34,7 +34,7 @@ public class gameGUI extends JFrame implements ActionListener
 	        rightPanel.setBackground(Color.ORANGE);
 	        window.add(rightPanel);
 	        
-	        //Bottom Panel 
+	        //Bottom Panel
 	        bottomPanel = new JPanel();
 	        bottomPanel.setPreferredSize(new Dimension(755, 50));
 	        bottomPanel.setBackground(Color.RED);
