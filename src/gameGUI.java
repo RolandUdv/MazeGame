@@ -15,6 +15,24 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton optionButton2;
 	private JButton optionButton3;
 	
+	private JButton upButton;
+	private JButton downButton;
+	private JButton leftButton;
+	private JButton rightButton;
+	private JButton blankButton1;
+	private JButton blankButton2;
+	private JButton blankButton3;
+	private JButton blankButton4;
+	private JButton blankButton5;
+	
+	//Button icon
+	private Icon iconAct;
+	private Icon iconStart;
+	private Icon iconReset;
+	private Icon iconSand;
+	private Icon iconBall;
+	//private Icon iconStart;
+	
 	//Panel variables
 	private JPanel topPanel;
 	private JPanel rightPanel;
@@ -28,12 +46,22 @@ public class gameGUI extends JFrame implements ActionListener
     private Timer timer;
 	
 	//Game frame size
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 	    gameGUI frame = new gameGUI();
 	    frame.setSize(875, 600);
 	    frame.createGUI();
 	    frame.show();
 	}
+	
+	//Icon size
+	/*public static void main(String[] args) 
+	{
+	    iconAct frame = new iconAct();
+	    frame.setSize(600, 700);
+	    frame.bottomPanel();
+	    frame.setVisible(true);
+	}*/
 
 	//Game layout and design, functions
 	private void createGUI() {
@@ -43,19 +71,28 @@ public class gameGUI extends JFrame implements ActionListener
 	    
 	    //Top Panel
 	    topPanel = new JPanel();
-	    topPanel.setLayout(new GridLayout(10, 10) );
+	    topPanel.setLayout(new GridLayout(13, 16) );
 	    topPanel.setPreferredSize(new Dimension(550, 500));
 	    topPanel.setBackground(Color.WHITE);
 	    window.add(topPanel);
 	    
 	    //Top Panel Grid Layout
-	    for(int nCount=0; nCount<100; nCount++) 
+	    for(int nCount=0; nCount<207; nCount++) 
 	    {
 	    	numberButton = new JButton(""+nCount);
-	    if(nCount==9)
+	    	//numberButton.setBorderPainted(false);
+	    if(nCount<19)
 	    {
-	    	numberButton.setForeground(Color.RED);
+	    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
+		    	numberButton.setIcon(iconSand);
 		}
+	    
+	    if(nCount==20)
+	    {
+    		iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
+	    	numberButton.setIcon(iconBall);
+	    }
+	    
 		if(nCount==90)
 		{
 			numberButton.setForeground(Color.ORANGE);
@@ -64,7 +101,38 @@ public class gameGUI extends JFrame implements ActionListener
 			topPanel.add(numberButton);
 			numberButton.addActionListener(this);
 	    }
-	        
+	    
+	    //Icons
+	    //Act Icon
+	    try
+	    {
+        	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("step.png")));
+        }
+	    catch (Exception e)
+        {
+            System.err.println("Baby Icon ImageIcon "+e);
+        }
+	    
+	    //Start Icon
+	    try
+	    {
+        	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("run.png")));
+        }
+	    catch (Exception e)
+        {
+            System.err.println("Baby Icon ImageIcon "+e);
+        }
+	    
+	    //Reset Icon
+	    try
+	    {
+        	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("reset.png")));
+        }
+	    catch (Exception e)
+        {
+            System.err.println("Baby Icon ImageIcon "+e);
+        }
+	    
 	    //Right Panel 1
 	    rightPanel = new JPanel();
 	    rightPanel.setPreferredSize(new Dimension(200, 500));
@@ -88,7 +156,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Bottom Panel Left
 	    bottomPanelLeft = new JPanel();
 	    bottomPanelLeft.setPreferredSize(new Dimension(377, 50));
-	    bottomPanelLeft.setBackground(Color.RED);
+	    //bottomPanelLeft.setBackground(Color.RED);
 	    window.add(bottomPanelLeft);
 	    
 	    //Bottom Panel Right
@@ -99,16 +167,19 @@ public class gameGUI extends JFrame implements ActionListener
 
 	    //Start button on bottom left Panel
 	    actButton = new JButton("Act");
+        actButton.setIcon(iconAct);
 	    bottomPanelLeft.add(actButton);
 	    actButton.addActionListener(this);
 	    
 	    //Start button on bottom left Panel
 	    startButton = new JButton("Start");
+	    startButton.setIcon(iconStart);
 	    bottomPanelLeft.add(startButton);
 	    startButton.addActionListener(this);
 	    
 	    //Start button on bottom left Panel
 	    resetButton = new JButton("Reset");
+	    resetButton.setIcon(iconReset);
 	    bottomPanelLeft.add(resetButton);
 	    resetButton.addActionListener(this);
 	    
