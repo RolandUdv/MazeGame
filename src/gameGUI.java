@@ -45,8 +45,9 @@ public class gameGUI extends JFrame implements ActionListener
 	    rightPanel.add(button);
 	    button.addActionListener(this);
 	}
-   
 }
+
+
 
 
 
