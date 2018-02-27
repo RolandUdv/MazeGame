@@ -31,17 +31,19 @@ public class gameGUI extends JFrame implements ActionListener
 	private Icon iconReset;
 	private Icon iconSand;
 	private Icon iconBall;
-	//private Icon iconStart;
+	private Icon iconSandstone;
+	private Icon iconWall;
 	
 	//Panel variables
 	private JPanel topPanel;
 	private JPanel rightPanel;
+	private JPanel rightPanel2;
 	private JPanel bottomPanelLeft;
 	private JPanel bottomPanelRight;
 	
 	//Timer variables
-    private JTextField secsField, minsField;
-    private JLabel secsLabel, minsLabel;
+    private JTextField secsField, minsField, hoursField;
+    private JLabel secsLabel, minsLabel, hoursLabel, timerLabel;
     private int ticks = 0;
     private Timer timer;
 	
@@ -49,7 +51,7 @@ public class gameGUI extends JFrame implements ActionListener
 	public static void main(String[] args) 
 	{
 	    gameGUI frame = new gameGUI();
-	    frame.setSize(875, 600);
+	    frame.setSize(775, 650);
 	    frame.createGUI();
 	    frame.show();
 	}
@@ -77,25 +79,38 @@ public class gameGUI extends JFrame implements ActionListener
 	    window.add(topPanel);
 	    
 	    //Top Panel Grid Layout
-	    for(int nCount=0; nCount<207; nCount++) 
+	    for(int nCount=0; nCount<208; nCount++) 
 	    {
 	    	numberButton = new JButton(""+nCount);
 	    	//numberButton.setBorderPainted(false);
-	    if(nCount<19)
+	    if(nCount<16)
 	    {
 	    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
 		    	numberButton.setIcon(iconSand);
 		}
 	    
-	    if(nCount==20)
+	    /*if(nCount==15)
 	    {
-    		iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
-	    	numberButton.setIcon(iconBall);
+    			iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
+    			numberButton.setIcon(iconBall);
+	    }*/
+	    
+	    if(nCount==47)
+	    {
+	    		iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
+    			numberButton.setIcon(iconWall);
 	    }
 	    
-		if(nCount==90)
+		if(nCount>192)
 		{
-			numberButton.setForeground(Color.ORANGE);
+				iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
+		    	numberButton.setIcon(iconSand);
+		}
+	    
+		if(nCount==192)
+		{
+	    		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
+		    	numberButton.setIcon(iconSandstone);
 		}
 		
 			topPanel.add(numberButton);
@@ -130,22 +145,38 @@ public class gameGUI extends JFrame implements ActionListener
         }
 	    catch (Exception e)
         {
-            System.err.println("Baby Icon ImageIcon "+e);
+            System.err.println("Reset Icon ImageIcon "+e);
         }
 	    
 	    //Right Panel 1
 	    rightPanel = new JPanel();
-	    rightPanel.setPreferredSize(new Dimension(200, 500));
+	    //rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
+	    rightPanel.setPreferredSize(new Dimension(185, 500));
 	    rightPanel.setBackground(Color.ORANGE);
 	    window.add(rightPanel);
 	    
-        minsLabel = new JLabel("Mins:  ");
+	    /*rightPanel2 = new JPanel();
+	    rightPanel2.setPreferredSize(new Dimension(185, 125));
+	    rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
+	    rightPanel2.setBackground(Color.ORANGE);
+	    window.add(rightPanel2);*/
+	    
+	    timerLabel = new JLabel("DIGITAL TIMER");
+	    rightPanel.add(timerLabel);
+	    
+	    hoursLabel = new JLabel("-");
+	    rightPanel.add(hoursLabel);
+	    
+        hoursField = new JTextField(2);
+        rightPanel.add(hoursField);
+	    
+        minsLabel = new JLabel(":");
         rightPanel.add(minsLabel);
  
         minsField = new JTextField(2);
         rightPanel.add(minsField);
  
-        secsLabel = new JLabel("    Secs:   ");
+        secsLabel = new JLabel(":");
         rightPanel.add(secsLabel);
  
         secsField = new JTextField(2);
@@ -155,13 +186,13 @@ public class gameGUI extends JFrame implements ActionListener
 	        
 	    //Bottom Panel Left
 	    bottomPanelLeft = new JPanel();
-	    bottomPanelLeft.setPreferredSize(new Dimension(377, 50));
-	    //bottomPanelLeft.setBackground(Color.RED);
+	    bottomPanelLeft.setPreferredSize(new Dimension(385, 50));
+	    bottomPanelLeft.setBackground(Color.RED);
 	    window.add(bottomPanelLeft);
 	    
 	    //Bottom Panel Right
 	    bottomPanelRight = new JPanel();
-	    bottomPanelRight.setPreferredSize(new Dimension(377, 50));
+	    bottomPanelRight.setPreferredSize(new Dimension(350, 50));
 	    bottomPanelRight.setBackground(Color.GREEN);
 	    window.add(bottomPanelRight);
 
@@ -208,12 +239,17 @@ public class gameGUI extends JFrame implements ActionListener
 	    exitButton.addActionListener(this);
 	}
 	
+	public void exitButton(ActionEvent e)
+	{
+	System.exit(0);
+	}
+	
     public void actionPerformed(ActionEvent e) 
     {
         //Exit program
         //System.exit(0);
 
-
+    		hoursField.setText(Integer.toString(ticks / 600));
 	        minsField.setText(Integer.toString(ticks / 60));
 	        secsField.setText(Integer.toString(ticks % 60));
 	        ticks = ticks + 1;
