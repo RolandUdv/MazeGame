@@ -198,7 +198,7 @@ public class gameGUI extends JFrame implements ActionListener
 
 	    //Start button on bottom left Panel
 	    actButton = new JButton("Act");
-        actButton.setIcon(iconAct);
+	    actButton.setIcon(iconAct);
 	    bottomPanelLeft.add(actButton);
 	    actButton.addActionListener(this);
 	    
@@ -249,10 +249,10 @@ public class gameGUI extends JFrame implements ActionListener
         //Exit program
         //System.exit(0);
 
-    		hoursField.setText(Integer.toString(ticks / 600));
-	        minsField.setText(Integer.toString(ticks / 60));
-	        secsField.setText(Integer.toString(ticks % 60));
-	        ticks = ticks + 1;
-	    }
+    hoursField.setText(Integer.toString(ticks / 600));
+	minsField.setText(Integer.toString(ticks / 60));
+	secsField.setText(Integer.toString(ticks % 60));
+	ticks = ticks + 1;
+	}
 	
 }
