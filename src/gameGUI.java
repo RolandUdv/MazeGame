@@ -45,6 +45,38 @@ public class gameGUI extends JFrame implements ActionListener
 	        rightPanel.add(button);
 	        button.addActionListener(this);
 	    }
+	    
+	    private JTextField secsField, minsField;
+	    private JLabel secsLabel, minsLabel;
+	    private int ticks = 0;
+	    private Timer timer;		
+	    
+	    private void timeStart() {
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    Container rightPanel = getContentPane();
+	    rightPanel.setLayout(new FlowLayout() );
+	        
+	    minsLabel = new JLabel("Mins:  ");
+        rightPanel.add(minsLabel);
+ 
+        minsField = new JTextField(2);
+        rightPanel.add(minsField);
+ 
+        secsLabel = new JLabel("    Secs:   ");
+        rightPanel.add(secsLabel);
+ 
+        secsField = new JTextField(2);
+        rightPanel.add(secsField);
+        timer = new Timer(1000, this);
+        timer.start();
+    }
+ 
+    public void timerAction(ActionEvent event)
+    {
+        minsField.setText(Integer.toString(ticks / 60));
+        secsField.setText(Integer.toString(ticks % 60));
+        ticks = ticks + 1;
+    }
 }
 
 
