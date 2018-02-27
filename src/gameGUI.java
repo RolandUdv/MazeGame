@@ -42,10 +42,10 @@ public class gameGUI extends JFrame implements ActionListener
 	private JPanel bottomPanelRight;
 	
 	//Timer variables
-    private JTextField secsField, minsField, hoursField;
-    private JLabel secsLabel, minsLabel, hoursLabel, timerLabel;
-    private int ticks = 0;
-    private Timer timer;
+	private JTextField secsField, minsField, hoursField;
+	private JLabel secsLabel, minsLabel, hoursLabel, timerLabel;
+	private int ticks = 0;
+	private Timer timer;
 	
 	//Game frame size
 	public static void main(String[] args) 
