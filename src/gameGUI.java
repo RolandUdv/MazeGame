@@ -5,6 +5,15 @@ import javax.swing.*;
 	
 public class gameGUI extends JFrame implements ActionListener 
 {
+	
+	/**********************************************************
+	* Program:	Assignment 2								  *
+	* Filename:	MazeGame.java								  *
+	* @author:  Roland Udvarlaki (17439891)					  *
+	* Course:	BSc Software Engineering Year 1				  *
+	* Module:	CSY1020 Problem Solving & Programming		  *	
+	***********************************************************/
+	
 	//Button variables
 	private JButton startButton;
 	private JButton actButton;
@@ -15,7 +24,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton optionButton2;
 	private JButton optionButton3;
 	
-	private JButton upButton;
+	/*private JButton upButton;
 	private JButton downButton;
 	private JButton leftButton;
 	private JButton rightButton;
@@ -23,7 +32,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton blankButton2;
 	private JButton blankButton3;
 	private JButton blankButton4;
-	private JButton blankButton5;
+	private JButton blankButton5;*/
 	
 	//Button icon
 	private Icon iconAct;
@@ -35,9 +44,12 @@ public class gameGUI extends JFrame implements ActionListener
 	private Icon iconWall;
 	
 	//Panel variables
+	private JPanel sidePanel;
 	private JPanel topPanel;
 	private JPanel rightPanel;
 	private JPanel rightPanel2;
+	private JPanel rightPanel3;
+	private JPanel rightCompass;
 	private JPanel bottomPanelLeft;
 	private JPanel bottomPanelRight;
 	
@@ -53,6 +65,10 @@ public class gameGUI extends JFrame implements ActionListener
 	    gameGUI frame = new gameGUI();
 	    frame.setSize(775, 650);
 	    frame.createGUI();
+	    frame.setLocationRelativeTo(null);
+	    //frame.setResizable(false);
+	    frame.setTitle("MazeGame - CSY1020"); 
+		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("greenfoot.png")));
 	    frame.show();
 	}
 	
@@ -125,7 +141,7 @@ public class gameGUI extends JFrame implements ActionListener
         }
 	    catch (Exception e)
         {
-            System.err.println("Baby Icon ImageIcon "+e);
+            System.err.println("Act Icon ImageIcon "+e);
         }
 	    
 	    //Start Icon
@@ -135,7 +151,7 @@ public class gameGUI extends JFrame implements ActionListener
         }
 	    catch (Exception e)
         {
-            System.err.println("Baby Icon ImageIcon "+e);
+            System.err.println("Start Icon ImageIcon "+e);
         }
 	    
 	    //Reset Icon
@@ -151,36 +167,51 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Right Panel 1
 	    rightPanel = new JPanel();
 	    //rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
-	    rightPanel.setPreferredSize(new Dimension(185, 500));
+	    rightPanel.setPreferredSize(new Dimension(185, 125));
+		rightPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
+		//rightPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 	    rightPanel.setBackground(Color.ORANGE);
 	    window.add(rightPanel);
 	    
-	    /*rightPanel2 = new JPanel();
+	    //Timer right side panel
+	    rightPanel2 = new JPanel();
 	    rightPanel2.setPreferredSize(new Dimension(185, 125));
-	    rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
-	    rightPanel2.setBackground(Color.ORANGE);
-	    window.add(rightPanel2);*/
+	    rightPanel.setLayout(new GridLayout(2, 2));
+	    rightPanel2.setBackground(Color.YELLOW);
+	    window.add(rightPanel2);
+	    
+	    //Option button right side panel
+	    rightPanel3 = new JPanel();
+	    rightPanel3.setPreferredSize(new Dimension(185, 125));
+	    rightPanel.setLayout(new GridLayout(2, 2));
+	    rightPanel3.setBackground(Color.GREEN);
+	    window.add(rightPanel3);
+	    
+	    //Compass right panel
+	    rightCompass = new JPanel();
+		rightCompass.setPreferredSize(new Dimension(130,100));
+		rightCompass.setLayout( new FlowLayout(FlowLayout.CENTER));
 	    
 	    timerLabel = new JLabel("DIGITAL TIMER");
 	    rightPanel.add(timerLabel);
 	    
 	    hoursLabel = new JLabel("-");
-	    rightPanel.add(hoursLabel);
+	    rightPanel2.add(hoursLabel);
 	    
         hoursField = new JTextField(2);
-        rightPanel.add(hoursField);
+        rightPanel2.add(hoursField);
 	    
         minsLabel = new JLabel(":");
-        rightPanel.add(minsLabel);
+        rightPanel2.add(minsLabel);
  
         minsField = new JTextField(2);
-        rightPanel.add(minsField);
+        rightPanel2.add(minsField);
  
         secsLabel = new JLabel(":");
-        rightPanel.add(secsLabel);
+        rightPanel2.add(secsLabel);
  
         secsField = new JTextField(2);
-        rightPanel.add(secsField);
+        rightPanel2.add(secsField);
         timer = new Timer(1000, this);
         timer.start();
 	        
@@ -217,25 +248,25 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Option 1 button on bottom left Panel
 	    optionButton1 = new JButton("Option 1");
 	    optionButton1.setPreferredSize(new Dimension(85, 25));
-	    rightPanel.add(optionButton1);
+	    rightPanel3.add(optionButton1);
 	    optionButton1.addActionListener(this);
 	    
 	    //Option 2 button on bottom left Panel
 	    optionButton2 = new JButton("Option 2");
 	    optionButton2.setPreferredSize(new Dimension(85, 25));
-	    rightPanel.add(optionButton2);
+	    rightPanel3.add(optionButton2);
 	    optionButton2.addActionListener(this);
 	    
 	    //Option 3 button on bottom left Panel
 	    optionButton3 = new JButton("Option 3");
 	    optionButton3.setPreferredSize(new Dimension(85, 25));
-	    rightPanel.add(optionButton3);
+	    rightPanel3.add(optionButton3);
 	    optionButton3.addActionListener(this);
 	    
 	    //Exit button on bottom left Panel
 	    exitButton = new JButton("Exit");
 	    exitButton.setPreferredSize(new Dimension(85, 25));
-	    rightPanel.add(exitButton);
+	    rightPanel3.add(exitButton);
 	    exitButton.addActionListener(this);
 	}
 	
