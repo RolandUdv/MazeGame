@@ -5,11 +5,15 @@ import javax.swing.*;
 public class gameGUI extends JFrame implements ActionListener 
 {
 
-	private JButton button;
+	private JButton startButton;
+	private JButton actButton;
+	private JButton resetButton;
 	private JPanel topPanel;
 	private JPanel rightPanel;
-	private JPanel bottomPanel;
-
+	private JPanel bottomPanelLeft;
+	private JPanel bottomPanelRight;
+	
+	//Game frame size
 	public static void main(String[] args) {
 	    gameGUI frame = new gameGUI();
 	    frame.setSize(875, 600);
@@ -28,22 +32,38 @@ public class gameGUI extends JFrame implements ActionListener
 	    topPanel.setBackground(Color.WHITE);
 	    window.add(topPanel);
 	        
-	    //Right Panel
+	    //Right Panel 1
 	    rightPanel = new JPanel();
 	    rightPanel.setPreferredSize(new Dimension(200, 500));
 	    rightPanel.setBackground(Color.ORANGE);
 	    window.add(rightPanel);
 	        
-	    //Bottom Panel
-	    bottomPanel = new JPanel();
-	    bottomPanel.setPreferredSize(new Dimension(755, 50));
-	    bottomPanel.setBackground(Color.RED);
-	    window.add(bottomPanel);
+	    //Bottom Panel Left
+	    bottomPanelLeft = new JPanel();
+	    bottomPanelLeft.setPreferredSize(new Dimension(377, 50));
+	    bottomPanelLeft.setBackground(Color.RED);
+	    window.add(bottomPanelLeft);
+	    
+	    //Bottom Panel Right
+	    bottomPanelRight = new JPanel();
+	    bottomPanelRight.setPreferredSize(new Dimension(377, 50));
+	    bottomPanelRight.setBackground(Color.GREEN);
+	    window.add(bottomPanelRight);
 
-	    //Button on Right Panel
-	    button = new JButton("Press me");
-	    rightPanel.add(button);
-	    button.addActionListener(this);
+	    //Start button on bottom left Panel
+	    actButton = new JButton("Act");
+	    bottomPanelLeft.add(actButton);
+	    actButton.addActionListener(this);
+	    
+	    //Start button on bottom left Panel
+	    startButton = new JButton("Start");
+	    bottomPanelLeft.add(startButton);
+	    startButton.addActionListener(this);
+	    
+	    //Start button on bottom left Panel
+	    resetButton = new JButton("Reset");
+	    bottomPanelLeft.add(resetButton);
+	    resetButton.addActionListener(this);
 	}
 }
 
