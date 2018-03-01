@@ -14,6 +14,7 @@ public class gameGUI extends JFrame implements ActionListener
 	* Module:	CSY1020 Problem Solving & Programming		  *	
 	***********************************************************/
 	
+	/*-------------------------------------------------------------------------------*/
 	//Button variables
 	private JButton startButton;
 	private JButton actButton;
@@ -47,9 +48,11 @@ public class gameGUI extends JFrame implements ActionListener
 	private JPanel sidePanel;
 	private JPanel topPanel;
 	private JPanel rightPanel;
-	private JPanel rightPanel2;
-	private JPanel rightPanel3;
-	private JPanel rightCompass;
+	private JPanel coordinatePanel;
+	private JPanel timerPanel;
+	private JPanel optionPanel;
+	private JPanel buttonPanel;
+	private JPanel compassPanel;
 	private JPanel bottomPanelLeft;
 	private JPanel bottomPanelRight;
 	
@@ -59,6 +62,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private int ticks = 0;
 	private Timer timer;
 	
+	/*-------------------------------------------------------------------------------*/
 	//Game frame size
 	public static void main(String[] args) 
 	{
@@ -164,61 +168,78 @@ public class gameGUI extends JFrame implements ActionListener
             System.err.println("Reset Icon ImageIcon "+e);
         }
 	    
+	    /*-------------------------------------------------------------------------------*/
+	    
 	    //Right Panel 1
 	    rightPanel = new JPanel();
-	    //rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
-	    rightPanel.setPreferredSize(new Dimension(185, 125));
-		rightPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
+	    rightPanel.setPreferredSize(new Dimension(185, 500));
+		//rightPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
 		//rightPanel.setBorder(BorderFactory.createRaisedBevelBorder());
-	    rightPanel.setBackground(Color.ORANGE);
+	    //rightPanel.setBackground(Color.ORANGE);
 	    window.add(rightPanel);
 	    
+	    //Coordinate right side panel
+	    coordinatePanel = new JPanel();
+	    coordinatePanel.setPreferredSize(new Dimension(185, 100));
+	    //rightPanel.setLayout(new GridLayout(2, 2));
+	    coordinatePanel.setBackground(Color.PINK);
+	    rightPanel.add(coordinatePanel, BorderLayout.EAST);
+	    
 	    //Timer right side panel
-	    rightPanel2 = new JPanel();
-	    rightPanel2.setPreferredSize(new Dimension(185, 125));
-	    rightPanel.setLayout(new GridLayout(2, 2));
-	    rightPanel2.setBackground(Color.YELLOW);
-	    window.add(rightPanel2);
+	    timerPanel = new JPanel();
+	    timerPanel.setPreferredSize(new Dimension(185, 100));
+	    timerPanel.setBackground(Color.YELLOW);
+	    rightPanel.add(timerPanel, BorderLayout.EAST);
+	    
+	    //Button right panel
+	    buttonPanel = new JPanel();
+	    buttonPanel.setPreferredSize(new Dimension(185,100));
+	    buttonPanel.setBackground(Color.BLUE);
+	    //buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+	    rightPanel.add(buttonPanel, BorderLayout.EAST);
 	    
 	    //Option button right side panel
-	    rightPanel3 = new JPanel();
-	    rightPanel3.setPreferredSize(new Dimension(185, 125));
-	    rightPanel.setLayout(new GridLayout(2, 2));
-	    rightPanel3.setBackground(Color.GREEN);
-	    window.add(rightPanel3);
+	    optionPanel = new JPanel();
+	    optionPanel.setPreferredSize(new Dimension(185, 75));
+	    optionPanel.setBackground(Color.GREEN);
+	    rightPanel.add(optionPanel, BorderLayout.EAST);
 	    
 	    //Compass right panel
-	    rightCompass = new JPanel();
-		rightCompass.setPreferredSize(new Dimension(130,100));
-		rightCompass.setLayout( new FlowLayout(FlowLayout.CENTER));
+	    compassPanel = new JPanel();
+	    compassPanel.setPreferredSize(new Dimension(185,125));
+	    compassPanel.setBackground(Color.RED);
+	    //compassPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
+	    rightPanel.add(compassPanel, BorderLayout.EAST);
 	    
-	    timerLabel = new JLabel("DIGITAL TIMER");
-	    rightPanel.add(timerLabel);
+	    /*-------------------------------------------------------------------------------*/
+	    
+	    timerLabel = new JLabel("               DIGITAL TIMER               ");
+	    timerPanel.add(timerLabel);
 	    
 	    hoursLabel = new JLabel("-");
-	    rightPanel2.add(hoursLabel);
+	    timerPanel.add(hoursLabel);
 	    
         hoursField = new JTextField(2);
-        rightPanel2.add(hoursField);
+        timerPanel.add(hoursField);
 	    
         minsLabel = new JLabel(":");
-        rightPanel2.add(minsLabel);
+        timerPanel.add(minsLabel);
  
         minsField = new JTextField(2);
-        rightPanel2.add(minsField);
+        timerPanel.add(minsField);
  
         secsLabel = new JLabel(":");
-        rightPanel2.add(secsLabel);
+        timerPanel.add(secsLabel);
  
         secsField = new JTextField(2);
-        rightPanel2.add(secsField);
+        timerPanel.add(secsField);
         timer = new Timer(1000, this);
         timer.start();
 	        
 	    //Bottom Panel Left
 	    bottomPanelLeft = new JPanel();
 	    bottomPanelLeft.setPreferredSize(new Dimension(385, 50));
-	    bottomPanelLeft.setBackground(Color.RED);
+	    //bottomPanelLeft.setBackground(Color.RED);
 	    window.add(bottomPanelLeft);
 	    
 	    //Bottom Panel Right
@@ -248,25 +269,25 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Option 1 button on bottom left Panel
 	    optionButton1 = new JButton("Option 1");
 	    optionButton1.setPreferredSize(new Dimension(85, 25));
-	    rightPanel3.add(optionButton1);
+	    optionPanel.add(optionButton1);
 	    optionButton1.addActionListener(this);
 	    
 	    //Option 2 button on bottom left Panel
 	    optionButton2 = new JButton("Option 2");
 	    optionButton2.setPreferredSize(new Dimension(85, 25));
-	    rightPanel3.add(optionButton2);
+	    optionPanel.add(optionButton2);
 	    optionButton2.addActionListener(this);
 	    
 	    //Option 3 button on bottom left Panel
 	    optionButton3 = new JButton("Option 3");
 	    optionButton3.setPreferredSize(new Dimension(85, 25));
-	    rightPanel3.add(optionButton3);
+	    optionPanel.add(optionButton3);
 	    optionButton3.addActionListener(this);
 	    
 	    //Exit button on bottom left Panel
 	    exitButton = new JButton("Exit");
 	    exitButton.setPreferredSize(new Dimension(85, 25));
-	    rightPanel3.add(exitButton);
+	    optionPanel.add(exitButton);
 	    exitButton.addActionListener(this);
 	}
 	
