@@ -25,7 +25,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton optionButton2;
 	private JButton optionButton3;
 	
-	/*private JButton upButton;
+	private JButton upButton;
 	private JButton downButton;
 	private JButton leftButton;
 	private JButton rightButton;
@@ -33,7 +33,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton blankButton2;
 	private JButton blankButton3;
 	private JButton blankButton4;
-	private JButton blankButton5;*/
+	private JButton blankButton5;
 	
 	//Button icon
 	private Icon iconAct;
@@ -194,6 +194,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Button right panel
 	    buttonPanel = new JPanel();
 	    buttonPanel.setPreferredSize(new Dimension(185,100));
+	    buttonPanel.setLayout(new GridLayout(3, 3));
 	    buttonPanel.setBackground(Color.BLUE);
 	    //buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 	    rightPanel.add(buttonPanel, BorderLayout.EAST);
@@ -247,6 +248,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    bottomPanelRight.setPreferredSize(new Dimension(350, 50));
 	    bottomPanelRight.setBackground(Color.GREEN);
 	    window.add(bottomPanelRight);
+	    
+	    /*-------------------------------------------------------------------------------*/
 
 	    //Start button on bottom left Panel
 	    actButton = new JButton("Act");
@@ -289,6 +292,54 @@ public class gameGUI extends JFrame implements ActionListener
 	    exitButton.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(exitButton);
 	    exitButton.addActionListener(this);
+	    
+	    /* Button Panel Buttons */
+	    
+	    blankButton1 = new JButton("");
+	    blankButton1.setPreferredSize(new Dimension(30, 25));
+	    buttonPanel.add(blankButton1);
+	    blankButton1.addActionListener(this);
+	    
+	    upButton = new JButton("^^");
+	    upButton.setPreferredSize(new Dimension(45, 25));
+	    buttonPanel.add(upButton);
+	    upButton.addActionListener(this);
+	    
+	    blankButton2 = new JButton("");
+	    blankButton2.setPreferredSize(new Dimension(30, 25));
+	    buttonPanel.add(blankButton2);
+	    blankButton2.addActionListener(this);
+	    
+	    leftButton = new JButton("<<");
+	    leftButton.setPreferredSize(new Dimension(45, 25));
+	    buttonPanel.add(leftButton);
+	    leftButton.addActionListener(this);
+	    
+	    blankButton3 = new JButton("");
+	    blankButton3.setPreferredSize(new Dimension(30, 25));
+	    buttonPanel.add(blankButton3);
+	    blankButton3.addActionListener(this);
+	    
+	    rightButton = new JButton(">>");
+	    rightButton.setPreferredSize(new Dimension(45, 25));
+	    buttonPanel.add(rightButton);
+	    rightButton.addActionListener(this);
+	    
+	    blankButton4 = new JButton("");
+	    blankButton4.setPreferredSize(new Dimension(30, 25));
+	    buttonPanel.add(blankButton4);
+	    blankButton4.addActionListener(this);
+	    
+	    downButton = new JButton("\\/ \\/");
+	    downButton.setPreferredSize(new Dimension(45, 25));
+	    buttonPanel.add(downButton);
+	    downButton.addActionListener(this);
+	    
+	    blankButton5 = new JButton("");
+	    blankButton5.setPreferredSize(new Dimension(30, 25));
+	    buttonPanel.add(blankButton5);
+	    blankButton5.addActionListener(this);
+	    
 	}
 	
 	public void exitButton(ActionEvent e)
