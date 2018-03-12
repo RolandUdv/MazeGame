@@ -62,6 +62,9 @@ public class gameGUI extends JFrame implements ActionListener
 	private int ticks = 0;
 	private Timer timer;
 	
+	//Other Labels
+	private JLabel optionLabel, squareLabel, directionLabel;
+	
 	/*-------------------------------------------------------------------------------*/
 	//Game frame size
 	public static void main(String[] args) 
@@ -181,7 +184,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Coordinate right side panel
 	    coordinatePanel = new JPanel();
 	    coordinatePanel.setPreferredSize(new Dimension(185, 100));
-	    //rightPanel.setLayout(new GridLayout(2, 2));
+	    coordinatePanel.setLayout(new GridLayout(3, 2));
 	    coordinatePanel.setBackground(Color.PINK);
 	    rightPanel.add(coordinatePanel, BorderLayout.EAST);
 	    
@@ -250,6 +253,16 @@ public class gameGUI extends JFrame implements ActionListener
 	    window.add(bottomPanelRight);
 	    
 	    /*-------------------------------------------------------------------------------*/
+	    
+	    //Labels for coordinate panel
+	    optionLabel = new JLabel("Option:");
+	    coordinatePanel.add(optionLabel);
+	    
+	    squareLabel = new JLabel("Square:");
+	    coordinatePanel.add(squareLabel);
+	    
+	    directionLabel = new JLabel("Direction:");
+	    coordinatePanel.add(directionLabel);
 
 	    //Start button on bottom left Panel
 	    actButton = new JButton("Act");
@@ -300,7 +313,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(blankButton1);
 	    blankButton1.addActionListener(this);
 	    
-	    upButton = new JButton("^^");
+	    upButton = new JButton("^");
 	    upButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(upButton);
 	    upButton.addActionListener(this);
@@ -310,7 +323,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(blankButton2);
 	    blankButton2.addActionListener(this);
 	    
-	    leftButton = new JButton("<<");
+	    leftButton = new JButton("<");
 	    leftButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(leftButton);
 	    leftButton.addActionListener(this);
@@ -320,7 +333,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(blankButton3);
 	    blankButton3.addActionListener(this);
 	    
-	    rightButton = new JButton(">>");
+	    rightButton = new JButton(">");
 	    rightButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(rightButton);
 	    rightButton.addActionListener(this);
@@ -330,7 +343,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(blankButton4);
 	    blankButton4.addActionListener(this);
 	    
-	    downButton = new JButton("\\/ \\/");
+	    downButton = new JButton("v");
 	    downButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(downButton);
 	    downButton.addActionListener(this);
