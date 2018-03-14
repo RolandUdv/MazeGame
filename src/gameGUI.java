@@ -64,6 +64,7 @@ public class gameGUI extends JFrame implements ActionListener
 	
 	//Other Labels
 	private JLabel optionLabel, squareLabel, directionLabel;
+	private JTextField optionField, squareField, directionField;
 	
 	/*-------------------------------------------------------------------------------*/
 	//Game frame size
@@ -258,11 +259,20 @@ public class gameGUI extends JFrame implements ActionListener
 	    optionLabel = new JLabel("Option:");
 	    coordinatePanel.add(optionLabel);
 	    
+	    optionField = new JTextField(2);
+        coordinatePanel.add(optionField);
+	    
 	    squareLabel = new JLabel("Square:");
 	    coordinatePanel.add(squareLabel);
 	    
+	    squareField = new JTextField(2);
+        coordinatePanel.add(squareField);
+	    
 	    directionLabel = new JLabel("Direction:");
 	    coordinatePanel.add(directionLabel);
+	    
+	    directionField = new JTextField(2);
+        coordinatePanel.add(directionField);
 
 	    //Start button on bottom left Panel
 	    actButton = new JButton("Act");
