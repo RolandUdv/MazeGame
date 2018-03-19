@@ -35,6 +35,8 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton blankButton4;
 	private JButton blankButton5;
 	
+	private JSlider speedSlider;
+	
 	//Button icon
 	private Icon iconAct;
 	private Icon iconStart;
@@ -65,6 +67,8 @@ public class gameGUI extends JFrame implements ActionListener
 	//Other Labels
 	private JLabel optionLabel, squareLabel, directionLabel;
 	private JTextField optionField, squareField, directionField;
+	
+	private JLabel SpeedLabel;
 	
 	/*-------------------------------------------------------------------------------*/
 	//Game frame size
@@ -172,6 +176,11 @@ public class gameGUI extends JFrame implements ActionListener
             System.err.println("Reset Icon ImageIcon "+e);
         }
 	    
+	    //Compass North
+	    //Compass South
+	    //Compass West
+	    //Compass East
+	    
 	    /*-------------------------------------------------------------------------------*/
 	    
 	    //Right Panel 1
@@ -219,24 +228,28 @@ public class gameGUI extends JFrame implements ActionListener
 	    /*-------------------------------------------------------------------------------*/
 	    
 	    timerLabel = new JLabel("               DIGITAL TIMER               ");
+	    timerLabel.setFont(new Font ("Arial", Font.BOLD, 16));
 	    timerPanel.add(timerLabel);
 	    
 	    hoursLabel = new JLabel("-");
-	    timerPanel.add(hoursLabel);
 	    
+	    timerPanel.add(hoursLabel);
         hoursField = new JTextField(2);
+        hoursField.setFont(new Font ("Arial", Font.BOLD, 16));
         timerPanel.add(hoursField);
 	    
         minsLabel = new JLabel(":");
         timerPanel.add(minsLabel);
  
         minsField = new JTextField(2);
+        minsField.setFont(new Font ("Arial", Font.BOLD, 16));
         timerPanel.add(minsField);
  
         secsLabel = new JLabel(":");
         timerPanel.add(secsLabel);
  
         secsField = new JTextField(2);
+        secsField.setFont(new Font ("Arial", Font.BOLD, 16));
         timerPanel.add(secsField);
         timer = new Timer(1000, this);
         timer.start();
@@ -247,34 +260,37 @@ public class gameGUI extends JFrame implements ActionListener
 	    //bottomPanelLeft.setBackground(Color.RED);
 	    window.add(bottomPanelLeft);
 	    
-	    //Bottom Panel Right
+	    //Speed Slider - Bottom Panel Right
 	    bottomPanelRight = new JPanel();
 	    bottomPanelRight.setPreferredSize(new Dimension(350, 50));
-	    bottomPanelRight.setBackground(Color.GREEN);
+	    //bottomPanelRight.setBackground(Color.GREEN);
 	    window.add(bottomPanelRight);
 	    
 	    /*-------------------------------------------------------------------------------*/
 	    
 	    //Labels for coordinate panel
 	    optionLabel = new JLabel("Option:");
+	    optionLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    coordinatePanel.add(optionLabel);
 	    
 	    optionField = new JTextField(2);
         coordinatePanel.add(optionField);
 	    
 	    squareLabel = new JLabel("Square:");
+	    squareLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    coordinatePanel.add(squareLabel);
 	    
 	    squareField = new JTextField(2);
         coordinatePanel.add(squareField);
 	    
 	    directionLabel = new JLabel("Direction:");
+	    directionLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    coordinatePanel.add(directionLabel);
 	    
 	    directionField = new JTextField(2);
         coordinatePanel.add(directionField);
 
-	    //Start button on bottom left Panel
+	    //Act button on bottom left Panel
 	    actButton = new JButton("Act");
 	    actButton.setIcon(iconAct);
 	    bottomPanelLeft.add(actButton);
@@ -286,12 +302,24 @@ public class gameGUI extends JFrame implements ActionListener
 	    bottomPanelLeft.add(startButton);
 	    startButton.addActionListener(this);
 	    
-	    //Start button on bottom left Panel
+	    //Reset button on bottom left Panel
 	    resetButton = new JButton("Reset");
 	    resetButton.setIcon(iconReset);
 	    bottomPanelLeft.add(resetButton);
 	    resetButton.addActionListener(this);
 	    
+	    //Slider on bottom right Panel
+	    SpeedLabel = new JLabel ("Speed");
+	    SpeedLabel.setFont(new Font ("Arial", Font.BOLD, 14));
+	    bottomPanelRight.add(SpeedLabel);        
+
+	    speedSlider = new JSlider(JSlider.HORIZONTAL, 5, 1000, 500); 
+	    bottomPanelRight.add(speedSlider);
+
+		/*speedSlider.setMajorTickSpacing(500);
+		speedSlider.setPaintTicks(true);
+		speedSlider.addActionListener(this);*/
+
 	    //Option 1 button on bottom left Panel
 	    optionButton1 = new JButton("Option 1");
 	    optionButton1.setPreferredSize(new Dimension(85, 25));
