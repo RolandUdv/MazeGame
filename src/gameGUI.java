@@ -186,27 +186,27 @@ public class gameGUI extends JFrame implements ActionListener
 	    coordinatePanel = new JPanel();
 	    coordinatePanel.setPreferredSize(new Dimension(185, 100));
 	    coordinatePanel.setLayout(new GridLayout(3, 2));
-	    coordinatePanel.setBackground(Color.PINK);
+	    //coordinatePanel.setBackground(Color.PINK);
 	    rightPanel.add(coordinatePanel, BorderLayout.EAST);
 	    
 	    //Timer right side panel
 	    timerPanel = new JPanel();
 	    timerPanel.setPreferredSize(new Dimension(185, 100));
-	    timerPanel.setBackground(Color.YELLOW);
+	    //timerPanel.setBackground(Color.YELLOW);
 	    rightPanel.add(timerPanel, BorderLayout.EAST);
 	    
 	    //Button right panel
 	    buttonPanel = new JPanel();
 	    buttonPanel.setPreferredSize(new Dimension(185,100));
 	    buttonPanel.setLayout(new GridLayout(3, 3));
-	    buttonPanel.setBackground(Color.BLUE);
+	    //buttonPanel.setBackground(Color.BLUE);
 	    //buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 	    rightPanel.add(buttonPanel, BorderLayout.EAST);
 	    
 	    //Option button right side panel
 	    optionPanel = new JPanel();
 	    optionPanel.setPreferredSize(new Dimension(185, 75));
-	    optionPanel.setBackground(Color.GREEN);
+	    //optionPanel.setBackground(Color.GREEN);
 	    rightPanel.add(optionPanel, BorderLayout.EAST);
 	    
 	    //Compass right panel
@@ -314,7 +314,11 @@ public class gameGUI extends JFrame implements ActionListener
 	    exitButton = new JButton("Exit");
 	    exitButton.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(exitButton);
-	    exitButton.addActionListener(this);
+	    exitButton.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.exit(0);
+	    	}
+	    });
 	    
 	    /* Button Panel Buttons */
 	    
@@ -322,6 +326,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton1.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton1);
 	    blankButton1.addActionListener(this);
+	    blankButton1.setVisible(false); //hide button
 	    
 	    upButton = new JButton("^");
 	    upButton.setPreferredSize(new Dimension(45, 25));
@@ -332,6 +337,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton2.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton2);
 	    blankButton2.addActionListener(this);
+	    blankButton2.setVisible(false); //hide button
 	    
 	    leftButton = new JButton("<");
 	    leftButton.setPreferredSize(new Dimension(45, 25));
@@ -342,6 +348,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton3.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton3);
 	    blankButton3.addActionListener(this);
+	    blankButton3.setVisible(false); //hide button
 	    
 	    rightButton = new JButton(">");
 	    rightButton.setPreferredSize(new Dimension(45, 25));
@@ -352,6 +359,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton4.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton4);
 	    blankButton4.addActionListener(this);
+	    blankButton4.setVisible(false); //hide button
 	    
 	    downButton = new JButton("v");
 	    downButton.setPreferredSize(new Dimension(45, 25));
@@ -362,13 +370,14 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton5.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton5);
 	    blankButton5.addActionListener(this);
+	    blankButton5.setVisible(false); //hide button
 	    
 	}
 	
-	public void exitButton(ActionEvent e)
+	/*public void exitButton(ActionEvent e)
 	{
 	System.exit(0);
-	}
+	}*/
 	
     public void actionPerformed(ActionEvent e) 
     {
