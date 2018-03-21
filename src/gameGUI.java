@@ -20,10 +20,11 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton actButton;
 	private JButton resetButton;
 	private JButton exitButton;
-	private JButton numberButton;
 	private JButton optionButton1;
 	private JButton optionButton2;
 	private JButton optionButton3;
+	
+	private JButton[] numberButton = new JButton[208];
 	
 	private JButton upButton;
 	private JButton downButton;
@@ -78,8 +79,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    frame.setSize(775, 650);
 	    frame.createGUI();
 	    frame.setLocationRelativeTo(null);
-	    //frame.setResizable(false);
-	    frame.setTitle("MazeGame - CSY1020"); 
+	    //frame.setResizable(false); Option to resize the gameGUI window frame
+	    frame.setTitle("MazeGame - CSY1020"); //Title for the game
 		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("greenfoot.png")));
 	    frame.show();
 	}
@@ -99,7 +100,22 @@ public class gameGUI extends JFrame implements ActionListener
 	    Container window = getContentPane();
 	    window.setLayout(new FlowLayout() );
 	    
-	    //Top Panel
+	    //Icons
+	    try
+	    {
+        	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("step.png")));
+        	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("run.png")));
+        	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("reset.png")));
+    		iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
+    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
+    		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
+        }
+	    catch (Exception e)
+        {
+            System.err.println("Icon ImageIcon "+e);
+        }
+	    
+	    //Top, Game panel with the grid
 	    topPanel = new JPanel();
 	    topPanel.setLayout(new GridLayout(13, 16) );
 	    topPanel.setPreferredSize(new Dimension(550, 500));
@@ -109,12 +125,13 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Top Panel Grid Layout
 	    for(int nCount=0; nCount<208; nCount++) 
 	    {
-	    	numberButton = new JButton(""+nCount);
-	    	//numberButton.setBorderPainted(false);
+	    	numberButton[nCount] = new JButton();
+			numberButton[nCount].setIcon(iconWall);
+	    	numberButton[nCount].setBorderPainted(false); //Removes border from grid
+			
 	    if(nCount<16)
 	    {
-	    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
-		    	numberButton.setIcon(iconSand);
+		    	numberButton[nCount].setIcon(iconSand);
 		}
 	    
 	    /*if(nCount==15)
@@ -123,58 +140,148 @@ public class gameGUI extends JFrame implements ActionListener
     			numberButton.setIcon(iconBall);
 	    }*/
 	    
-	    if(nCount==47)
+	    if(nCount>47 && nCount<64) //ROW
 	    {
-	    		iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
-    			numberButton.setIcon(iconWall);
+    			numberButton[nCount].setIcon(iconSand);
 	    }
+	    
+	    if(nCount>95 && nCount<112) //ROW
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount>143 && nCount<160) //ROW
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==17)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==33)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==21)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==37)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==25)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==41)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==66)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==82)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==70)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==86)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==75)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==91)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==113)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==129)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==117)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==133)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==124)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==140)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    ///////////////////////////////////////////
+	    
+	    if(nCount==162)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==178)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==167)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    
+	    if(nCount==183)
+	    {
+    			numberButton[nCount].setIcon(iconSand);
+	    }
+	    ///////////////////////////////
+	    
 	    
 		if(nCount>192)
 		{
-				iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
-		    	numberButton.setIcon(iconSand);
+				numberButton[nCount].setIcon(iconSand);
 		}
 	    
 		if(nCount==192)
 		{
-	    		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
-		    	numberButton.setIcon(iconSandstone);
+	    		numberButton[nCount].setIcon(iconSandstone);
 		}
 		
-			topPanel.add(numberButton);
-			numberButton.addActionListener(this);
+			topPanel.add(numberButton[nCount]);
+			numberButton[nCount].addActionListener(this);
 	    }
-	    
-	    //Icons
-	    //Act Icon
-	    try
-	    {
-        	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("step.png")));
-        }
-	    catch (Exception e)
-        {
-            System.err.println("Act Icon ImageIcon "+e);
-        }
-	    
-	    //Start Icon
-	    try
-	    {
-        	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("run.png")));
-        }
-	    catch (Exception e)
-        {
-            System.err.println("Start Icon ImageIcon "+e);
-        }
-	    
-	    //Reset Icon
-	    try
-	    {
-        	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("reset.png")));
-        }
-	    catch (Exception e)
-        {
-            System.err.println("Reset Icon ImageIcon "+e);
-        }
 	    
 	    //Compass North
 	    //Compass South
@@ -412,7 +519,7 @@ public class gameGUI extends JFrame implements ActionListener
         //Exit program
         //System.exit(0);
 
-    hoursField.setText(Integer.toString(ticks / 600));
+    hoursField.setText(Integer.toString(ticks / 3600));
 	minsField.setText(Integer.toString(ticks / 60));
 	secsField.setText(Integer.toString(ticks % 60));
 	ticks = ticks + 1;
