@@ -288,9 +288,9 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Compass West
 	    //Compass East
 	    
-	    /*-------------------------------------------------------------------------------*/
+	    /*----------------------------------------PANELS START----------------------------------------*/
 	    
-	    //Right Panel 1
+	    //BIG Right side panel
 	    rightPanel = new JPanel();
 	    rightPanel.setPreferredSize(new Dimension(185, 500));
 		//rightPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
@@ -332,7 +332,23 @@ public class gameGUI extends JFrame implements ActionListener
 	    //compassPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
 	    rightPanel.add(compassPanel, BorderLayout.EAST);
 	    
-	    /*-------------------------------------------------------------------------------*/
+	    //Bottom Panel Left
+	    bottomPanelLeft = new JPanel();
+	    bottomPanelLeft.setPreferredSize(new Dimension(385, 50));
+	    //bottomPanelLeft.setBackground(Color.RED);
+	    window.add(bottomPanelLeft);
+	    
+	    //Speed Slider - Bottom Panel Right
+	    bottomPanelRight = new JPanel();
+	    bottomPanelRight.setPreferredSize(new Dimension(350, 50));
+	    //bottomPanelRight.setBackground(Color.GREEN);
+	    window.add(bottomPanelRight);
+	    
+	    /*----------------------------------------PANELS END----------------------------------------*/
+	    
+	    /*----------------------------------------NAVIGATION, LABELS, BUTTONS AND SLIDERS START----------------------------------------*/
+
+	    /*----------TIMER----------*/
 	    
 	    timerLabel = new JLabel("               DIGITAL TIMER               ");
 	    timerLabel.setFont(new Font ("Arial", Font.BOLD, 16));
@@ -360,22 +376,8 @@ public class gameGUI extends JFrame implements ActionListener
         timerPanel.add(secsField);
         timer = new Timer(1000, this);
         timer.start();
-	        
-	    //Bottom Panel Left
-	    bottomPanelLeft = new JPanel();
-	    bottomPanelLeft.setPreferredSize(new Dimension(385, 50));
-	    //bottomPanelLeft.setBackground(Color.RED);
-	    window.add(bottomPanelLeft);
 	    
-	    //Speed Slider - Bottom Panel Right
-	    bottomPanelRight = new JPanel();
-	    bottomPanelRight.setPreferredSize(new Dimension(350, 50));
-	    //bottomPanelRight.setBackground(Color.GREEN);
-	    window.add(bottomPanelRight);
-	    
-	    /*-------------------------------------------------------------------------------*/
-	    
-	    //Labels for coordinate panel
+	    /*----------COORDINATE PANEL----------*/
 	    optionLabel = new JLabel("Option:");
 	    optionLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    coordinatePanel.add(optionLabel);
@@ -397,6 +399,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    directionField = new JTextField(2);
         coordinatePanel.add(directionField);
 
+	    /*----------BOTTOM RIGHT BUTTONS----------*/
 	    //Act button on bottom left Panel
 	    actButton = new JButton("Act");
 	    actButton.setIcon(iconAct);
@@ -415,7 +418,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    bottomPanelLeft.add(resetButton);
 	    resetButton.addActionListener(this);
 	    
-	    //Slider on bottom right Panel
+	    /*----------SLIDER----------*/
 	    SpeedLabel = new JLabel ("Speed");
 	    SpeedLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    bottomPanelRight.add(SpeedLabel);        
@@ -427,6 +430,8 @@ public class gameGUI extends JFrame implements ActionListener
 		speedSlider.setPaintTicks(true);
 		speedSlider.addActionListener(this);*/
 
+	    /*----------OPTION BUTTONS ON RIGHT PANEL----------*/
+	    
 	    //Option 1 button on bottom left Panel
 	    optionButton1 = new JButton("Option 1");
 	    optionButton1.setPreferredSize(new Dimension(85, 25));
@@ -455,6 +460,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    	}
 	    });
 	    
+	    /*----------ARROW NAVIGATION BUTTONS----------*/
 	    /* Button Panel Buttons */
 	    
 	    blankButton1 = new JButton("");
@@ -508,6 +514,9 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton5.setVisible(false); //hide button
 	    
 	}
+	
+    /*----------------------------------------NAVIGATION, LABELS, BUTTONS AND SLIDERS END----------------------------------------*/
+
 	
 	/*public void exitButton(ActionEvent e)
 	{
