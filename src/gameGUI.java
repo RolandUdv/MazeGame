@@ -535,23 +535,35 @@ public class gameGUI extends JFrame implements ActionListener
 	    
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////
+	
+	/*public void actionPerformed1(ActionEvent event)
+	{    	    	
+
+		System.out.println("ActionListener Triggered");
+
+		Object source = event.getSource();
+
+
+		if(source==JMenuHelp){
+			System.out.println("HowTo");
+
+			JOptionPane.showMessageDialog(null, "Aim of the game is to move the golden ball to the grey tile \n located on the maze using the onscreen arrow buttons to \n move in a given direction."
+					+ "There are three options/levels to \n complete which you will have to work through. There is also \n the 'Act' button where this will show you one step at a time \n on how to complete this maze."
+					+ "There is also a 'Run' button \n included which will  make the golden ball move itself from \n start to finish, using the speed slider to control how fast \n you want the ball to move in 'Run' mode ONLY", 
+					"About CBallMaze", JOptionPane.INFORMATION_MESSAGE);
+
+		}
+	}*/
     /*----------------------------------------NAVIGATION, LABELS, BUTTONS AND SLIDERS END----------------------------------------*/
 
 	
-	/*public void exitButton(ActionEvent e)
-	{
-	System.exit(0);
-	}*/
-	
     public void actionPerformed(ActionEvent e) 
     {
-        //Exit program
-        //System.exit(0);
-
     hoursField.setText(Integer.toString(ticks / 3600));
 	minsField.setText(Integer.toString(ticks / 60));
 	secsField.setText(Integer.toString(ticks % 60));
 	ticks = ticks + 1;
 	}
-	
+    
 }
