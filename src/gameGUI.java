@@ -14,7 +14,7 @@ public class gameGUI extends JFrame implements ActionListener
 	* Module:	CSY1020 Problem Solving & Programming		  *	
 	***********************************************************/
 	
-	/*-------------------------------------------------------------------------------*/
+    /*----------------------------------------VARIABELS START----------------------------------------*/
 	//Button variables
 	private JButton startButton;
 	private JButton actButton;
@@ -36,9 +36,15 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton blankButton4;
 	private JButton blankButton5;
 	
-	private JSlider speedSlider;
+	//Menu variables
+	private JMenuBar menuBar;
+	private JMenu JMenuControl, JMenuHelp, JMenuScenario, JMenuEdit;
 	
-	//Button icon
+	//Slider
+	private JSlider speedSlider;
+	private JLabel SpeedLabel;
+	
+	//Button icons
 	private Icon iconAct;
 	private Icon iconStart;
 	private Icon iconReset;
@@ -65,13 +71,12 @@ public class gameGUI extends JFrame implements ActionListener
 	private int ticks = 0;
 	private Timer timer;
 	
-	//Other Labels
+	//Option variables
 	private JLabel optionLabel, squareLabel, directionLabel;
 	private JTextField optionField, squareField, directionField;
+
 	
-	private JLabel SpeedLabel;
-	
-	/*-------------------------------------------------------------------------------*/
+    /*----------------------------------------VARIABELS END----------------------------------------*/
 	//Game frame size
 	public static void main(String[] args) 
 	{
@@ -114,7 +119,24 @@ public class gameGUI extends JFrame implements ActionListener
         {
             System.err.println("Icon ImageIcon "+e);
         }
+
+	    /*----------JMENU TOP START----------*/
+	    menuBar = new JMenuBar();
+	    setJMenuBar(menuBar);
 	    
+	    JMenuScenario = new JMenu("Scenario");
+	    menuBar.add(JMenuScenario);
+		
+		JMenuEdit= new JMenu("Edit");
+		menuBar.add(JMenuEdit);
+
+		JMenuControl = new JMenu("Controls");
+		menuBar.add(JMenuControl);
+
+		JMenuHelp = new JMenu("Help");
+		menuBar.add(JMenuHelp); 
+	    /*----------JMENU TOP END----------*/
+
 	    //Top, Game panel with the grid
 	    topPanel = new JPanel();
 	    topPanel.setLayout(new GridLayout(13, 16) );
@@ -265,9 +287,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    if(nCount==183)
 	    {
     			numberButton[nCount].setIcon(iconSand);
-	    }
-	    ///////////////////////////////
-	    
+	    }	    
 	    
 		if(nCount>192)
 		{
