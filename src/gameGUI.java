@@ -9,7 +9,7 @@ public class gameGUI extends JFrame implements ActionListener
 	/**********************************************************
 	* Program:	Assignment 2: Ball Maze						  *
 	* Filename:	MazeGame.java								  *
-	* @author:  Roland Udvarlaki (17439891)					  *
+	* @author:	Roland Udvarlaki (17439891)					  *
 	* Course:	BSc Software Engineering Year 1				  *
 	* Module:	CSY1020 Problem Solving & Programming		  *
 	* Tutor: 	Gary Hill									  *	
