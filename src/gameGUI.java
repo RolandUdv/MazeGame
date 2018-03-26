@@ -13,7 +13,7 @@ public class gameGUI extends JFrame implements ActionListener
 	* Course:	BSc Software Engineering Year 1				  *
 	* Module:	CSY1020 Problem Solving & Programming		  *
 	* Tutor: Gary Hill										  *	
-	* @version: 1.0											  *
+	* @version: 1.0					s						  *
 	* Date: 27/03/2018										  *
 	***********************************************************/
 	
