@@ -23,6 +23,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton optionButton1;
 	private JButton optionButton2;
 	private JButton optionButton3;
+	private JButton compassImage;
 	
 	private JButton[] numberButton = new JButton[208];
 	
@@ -52,6 +53,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private Icon iconBall;
 	private Icon iconSandstone;
 	private Icon iconWall;
+	private Icon cNorth, cSouth, cEast, cWest;
 	
 	//Panel variables
 	private JPanel sidePanel;
@@ -114,6 +116,11 @@ public class gameGUI extends JFrame implements ActionListener
     		iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
     		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
     		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
+    		cNorth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("north.jpg")));
+    		cSouth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("south.jpg")));
+    		cEast = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("east.jpg")));
+    		cWest = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("west.jpg")));
+    		
         }
 	    catch (Exception e)
         {
@@ -348,7 +355,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Compass right panel
 	    compassPanel = new JPanel();
 	    compassPanel.setPreferredSize(new Dimension(185,125));
-	    compassPanel.setBackground(Color.RED);
+	    //compassPanel.setBackground(Color.RED);
 	    //compassPanel.setLayout( new FlowLayout(FlowLayout.CENTER));
 	    rightPanel.add(compassPanel, BorderLayout.EAST);
 	    
@@ -436,7 +443,22 @@ public class gameGUI extends JFrame implements ActionListener
 	    resetButton = new JButton("Reset");
 	    resetButton.setIcon(iconReset);
 	    bottomPanelLeft.add(resetButton);
-	    resetButton.addActionListener(this);
+	    resetButton.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e) {
+    		/*rightPanel.removeAll();
+    		rightPanel.updateUI();*/
+    		
+    		optionField.setText("-");
+    		squareField.setText("-");
+    		directionField.setText("-");
+    		timer.stop();
+    		secsField.setText("0"); 
+    		minsField.setText("0");
+    		hoursField.setText("0");
+    	    compassImage.setIcon(cNorth);
+    		JOptionPane.showMessageDialog(null, "The game has been reset!","Reset Notification!", JOptionPane.INFORMATION_MESSAGE);
+    	}
+    });
 	    
 	    /*----------SLIDER----------*/
 	    SpeedLabel = new JLabel ("Speed");
@@ -489,10 +511,15 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton1.addActionListener(this);
 	    blankButton1.setVisible(false); //hide button
 	    
+	    /* ----------UP BUTTON----------*/
 	    upButton = new JButton("^");
 	    upButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(upButton);
-	    upButton.addActionListener(this);
+	    upButton.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    		compassImage.setIcon(cNorth); 
+	    	}
+	    });
 	    
 	    blankButton2 = new JButton("");
 	    blankButton2.setPreferredSize(new Dimension(30, 25));
@@ -500,10 +527,16 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton2.addActionListener(this);
 	    blankButton2.setVisible(false); //hide button
 	    
+	    /* ----------LEFT BUTTON----------*/
 	    leftButton = new JButton("<");
 	    leftButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(leftButton);
-	    leftButton.addActionListener(this);
+	    leftButton.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    	    compassImage.setIcon(cWest); 
+
+	    	}
+	    });
 	    
 	    blankButton3 = new JButton("");
 	    blankButton3.setPreferredSize(new Dimension(30, 25));
@@ -511,10 +544,16 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton3.addActionListener(this);
 	    blankButton3.setVisible(false); //hide button
 	    
+	    /* ----------RIGHT BUTTON----------*/
 	    rightButton = new JButton(">");
 	    rightButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(rightButton);
-	    rightButton.addActionListener(this);
+	    rightButton.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    	    compassImage.setIcon(cEast); 
+
+	    	}
+	    });
 	    
 	    blankButton4 = new JButton("");
 	    blankButton4.setPreferredSize(new Dimension(30, 25));
@@ -522,16 +561,30 @@ public class gameGUI extends JFrame implements ActionListener
 	    blankButton4.addActionListener(this);
 	    blankButton4.setVisible(false); //hide button
 	    
+	    /* ----------DOWN BUTTON----------*/
 	    downButton = new JButton("v");
 	    downButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(downButton);
-	    downButton.addActionListener(this);
+	    downButton.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    	    compassImage.setIcon(cSouth); 
+
+	    	}
+	    });
 	    
 	    blankButton5 = new JButton("");
 	    blankButton5.setPreferredSize(new Dimension(30, 25));
 	    buttonPanel.add(blankButton5);
 	    blankButton5.addActionListener(this);
 	    blankButton5.setVisible(false); //hide button
+	    
+	    /*----------COMPASS BUTTON----------*/
+	    /* Compass */
+	    compassImage = new JButton();      
+	    compassImage.setPreferredSize(new Dimension(80, 80));
+	    compassImage.setBorderPainted(false);
+	    compassImage.setIcon(cNorth);     
+		compassPanel.add(compassImage, compassImage); 
 	    
 	}
 	
