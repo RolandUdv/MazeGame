@@ -313,10 +313,6 @@ public class gameGUI extends JFrame implements ActionListener
 			numberButton[nCount].addActionListener(this);
 	    }
 	    
-	    //Compass North
-	    //Compass South
-	    //Compass West
-	    //Compass East
 	    
 	    /*----------------------------------------PANELS START----------------------------------------*/
 	    
@@ -448,8 +444,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    bottomPanelLeft.add(resetButton);
 	    resetButton.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e) {
-    		/*rightPanel.removeAll();
-    		rightPanel.updateUI();*/
+    		//rightPanel.removeAll();
+    		//rightPanel.updateUI();
     		
     		optionField.setText("-");
     		squareField.setText("-");
