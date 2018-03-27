@@ -123,6 +123,7 @@ public class gameGUI extends JFrame implements ActionListener
     		cSouth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("south.jpg")));
     		cEast = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("east.jpg")));
     		cWest = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("west.jpg")));
+    		iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
     		
         }
 	    catch (Exception e)
@@ -166,11 +167,11 @@ public class gameGUI extends JFrame implements ActionListener
 		    	numberButton[nCount].setIcon(iconSand);
 		}
 	    
-	    /*if(nCount==15)
+	    //ICON BALL
+	    if(nCount==15)
 	    {
-    			iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
-    			numberButton.setIcon(iconBall);
-	    }*/
+    			numberButton[nCount].setIcon(iconBall);
+	    }
 	    
 	    if(nCount>47 && nCount<64) //ROW
 	    {
@@ -450,6 +451,11 @@ public class gameGUI extends JFrame implements ActionListener
     		optionField.setText("-");
     		squareField.setText("-");
     		directionField.setText("-");
+    		
+    		optionField.setHorizontalAlignment(JTextField.CENTER);
+    		squareField.setHorizontalAlignment(JTextField.CENTER);
+    		directionField.setHorizontalAlignment(JTextField.CENTER);
+    		
     		timer.stop();
     		secsField.setText("0"); 
     		minsField.setText("0");
@@ -517,6 +523,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    upButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
 	    		compassImage.setIcon(cNorth); 
+	    		directionField.setText("North");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
 	    });
 	    
@@ -533,7 +541,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    leftButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
 	    	    compassImage.setIcon(cWest); 
-
+	    		directionField.setText("West");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);  
 	    	}
 	    });
 	    
@@ -550,7 +559,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    rightButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
 	    	    compassImage.setIcon(cEast); 
-
+	    		directionField.setText("East");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
 	    });
 	    
@@ -567,7 +577,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    downButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
 	    	    compassImage.setIcon(cSouth); 
-
+	    		directionField.setText("South");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
 	    });
 	    
