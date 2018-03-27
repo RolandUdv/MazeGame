@@ -79,7 +79,7 @@ public class gameGUI extends JFrame implements ActionListener
 	//Option variables
 	private JLabel optionLabel, squareLabel, directionLabel;
 	private JTextField optionField, squareField, directionField;
-
+ 
 	
     /*----------------------------------------VARIABELS END----------------------------------------*/
 	//Game frame size
@@ -116,14 +116,22 @@ public class gameGUI extends JFrame implements ActionListener
         	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("step.png")));
         	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("run.png")));
         	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("reset.png")));
-    		iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
+        	
+        	iconWall = new ImageIcon(((new ImageIcon("images\\\\white32x32.jpg").getImage().getScaledInstance(32, 32,java.awt.Image.SCALE_SMOOTH))));
+
+    		//iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
+    		
     		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
     		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
     		cNorth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("north.jpg")));
     		cSouth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("south.jpg")));
     		cEast = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("east.jpg")));
     		cWest = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("west.jpg")));
-    		iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
+    		
+    		//Reference - https://stackoverflow.com/questions/6714045/how-to-resize-jlabel-imageicon
+    		iconBall = new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH))));
+    		
+    		//iconBall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand60x60.png")));
     		
         }
 	    catch (Exception e)
@@ -160,6 +168,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    {
 	    	numberButton[nCount] = new JButton();
 			numberButton[nCount].setIcon(iconWall);
+			numberButton[nCount].setBackground(Color.WHITE);//Added white background to remove the leftover borders
 	    	numberButton[nCount].setBorderPainted(false); //Removes border from grid
 			
 	    if(nCount<16)
@@ -410,6 +419,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    coordinatePanel.add(optionLabel);
 	    
 	    optionField = new JTextField(2);
+		optionField.setText("-"); //Shows dash on default
+		optionField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(optionField);
 	    
 	    squareLabel = new JLabel("Square:");
@@ -417,6 +428,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    coordinatePanel.add(squareLabel);
 	    
 	    squareField = new JTextField(2);
+	    squareField.setText("-"); //Shows dash on default
+	    squareField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(squareField);
 	    
 	    directionLabel = new JLabel("Direction:");
@@ -424,6 +437,8 @@ public class gameGUI extends JFrame implements ActionListener
 	    coordinatePanel.add(directionLabel);
 	    
 	    directionField = new JTextField(2);
+	    directionField.setText("-"); //Shows dash on default
+	    directionField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(directionField);
 
 	    /*----------BOTTOM RIGHT BUTTONS----------*/
@@ -483,19 +498,34 @@ public class gameGUI extends JFrame implements ActionListener
 	    optionButton1 = new JButton("Option 1");
 	    optionButton1.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(optionButton1);
-	    optionButton1.addActionListener(this);
+	    optionButton1.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    		optionField.setText("Option 1");
+	    		optionField.setHorizontalAlignment(JTextField.CENTER);
+	    	}
+	    });
 	    
 	    //Option 2 button on bottom left Panel
 	    optionButton2 = new JButton("Option 2");
 	    optionButton2.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(optionButton2);
-	    optionButton2.addActionListener(this);
+	    optionButton2.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    		optionField.setText("Option 2");
+	    		optionField.setHorizontalAlignment(JTextField.CENTER);
+	    	}
+	    });
 	    
 	    //Option 3 button on bottom left Panel
 	    optionButton3 = new JButton("Option 3");
 	    optionButton3.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(optionButton3);
-	    optionButton3.addActionListener(this);
+	    optionButton3.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e) {
+	    		optionField.setText("Option 3");
+	    		optionField.setHorizontalAlignment(JTextField.CENTER);
+	    	}
+	    });
 	    
 	    //Exit button on bottom left Panel
 	    exitButton = new JButton("Exit");
@@ -620,6 +650,10 @@ public class gameGUI extends JFrame implements ActionListener
 	}*/
     /*----------------------------------------NAVIGATION, LABELS, BUTTONS AND SLIDERS END----------------------------------------*/
 
+	/*public void squareLabel() {
+		squareField.setText(Integer.toString(numberButton(nCount)));
+		squareField.setHorizontalAlignment(JTextField.CENTER);
+	}*/
 	
     public void actionPerformed(ActionEvent e) 
     {
