@@ -29,6 +29,7 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton compassImage;
 	
 	private JButton[] numberButton = new JButton[208];
+	private int xBall =0, yBall=15, nBall=15;
 	
 	private JButton upButton;
 	private JButton downButton;
@@ -446,13 +447,21 @@ public class gameGUI extends JFrame implements ActionListener
 	    actButton = new JButton("Act");
 	    actButton.setIcon(iconAct);
 	    bottomPanelLeft.add(actButton);
-	    actButton.addActionListener(this);
+	    actButton.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e) {
+    		System.out.println("Act Button");
+    	}
+    });
 	    
 	    //Start button on bottom left Panel
 	    startButton = new JButton("Start");
 	    startButton.setIcon(iconStart);
 	    bottomPanelLeft.add(startButton);
-	    startButton.addActionListener(this);
+	    startButton.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e) {
+    		System.out.println("Start Button");
+    	}
+    });
 	    
 	    //Reset button on bottom left Panel
 	    resetButton = new JButton("Reset");
@@ -460,6 +469,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    bottomPanelLeft.add(resetButton);
 	    resetButton.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e) {
+    		System.out.println("Reset Button");
     		//rightPanel.removeAll();
     		//rightPanel.updateUI();
     		
@@ -500,6 +510,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    optionPanel.add(optionButton1);
 	    optionButton1.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Option 1 Button");
 	    		optionField.setText("Option 1");
 	    		optionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
@@ -511,6 +522,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    optionPanel.add(optionButton2);
 	    optionButton2.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Option 2 Button");
 	    		optionField.setText("Option 2");
 	    		optionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
@@ -522,6 +534,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    optionPanel.add(optionButton3);
 	    optionButton3.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Option 3 Button");
 	    		optionField.setText("Option 3");
 	    		optionField.setHorizontalAlignment(JTextField.CENTER);
 	    	}
@@ -531,8 +544,13 @@ public class gameGUI extends JFrame implements ActionListener
 	    exitButton = new JButton("Exit");
 	    exitButton.setPreferredSize(new Dimension(85, 25));
 	    optionPanel.add(exitButton);
+	    //exitButton.setBackground(Color.LIGHT_YELLOW);
+	    //Reference - https://way2java.com/java-general/java-set-background-color/
+	    //Color clr1 = new Color(255, 255, 204);
+	    //exitButton.setBackground(clr1);
 	    exitButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Exit button");
 	    		System.exit(0);
 	    	}
 	    });
@@ -552,6 +570,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(upButton);
 	    upButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Up Button");
 	    		compassImage.setIcon(cNorth); 
 	    		directionField.setText("North");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
@@ -569,7 +588,17 @@ public class gameGUI extends JFrame implements ActionListener
 	    leftButton.setPreferredSize(new Dimension(45, 25));
 	    buttonPanel.add(leftButton);
 	    leftButton.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent e) {
+	    	public void actionPerformed(ActionEvent e) {	///////////////////////////////////////////////////////////////////////////////////////
+	    		System.out.println("Left Button");
+	    		
+	    		//numberButton[nCount] = numberButton[nCount] -1;
+	    		//Start here
+	    		/*if(numberButton[nCount]=iconSand) {
+	    			numberButton[nCount] = nCount--;
+	    		}*/
+	    			
+
+	    		
 	    	    compassImage.setIcon(cWest); 
 	    		directionField.setText("West");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);  
@@ -588,6 +617,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(rightButton);
 	    rightButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Right Button");
 	    	    compassImage.setIcon(cEast); 
 	    		directionField.setText("East");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
@@ -606,6 +636,7 @@ public class gameGUI extends JFrame implements ActionListener
 	    buttonPanel.add(downButton);
 	    downButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("Down Button");
 	    	    compassImage.setIcon(cSouth); 
 	    		directionField.setText("South");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
