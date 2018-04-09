@@ -1,9 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 
 import javax.swing.*;
 	
-public class gameGUI extends JFrame implements ActionListener 
+public class CBallMaze extends JFrame implements ActionListener 
 {
 	
 	/**********************************************************
@@ -28,8 +29,10 @@ public class gameGUI extends JFrame implements ActionListener
 	private JButton optionButton3;
 	private JButton compassImage;
 	
+	//private JButton gridButton[][] = new JButton[13][16];
 	private JButton[] numberButton = new JButton[208];
-	private int xBall =0, yBall=15, nBall=15;
+	//private int xBall = 0, yBall = 15, nBall = 15;
+	private int nBall = 15;
 	
 	private JButton upButton;
 	private JButton downButton;
@@ -86,13 +89,13 @@ public class gameGUI extends JFrame implements ActionListener
 	//Game frame size
 	public static void main(String[] args) 
 	{
-	    gameGUI frame = new gameGUI();
+	    CBallMaze frame = new CBallMaze();
 	    frame.setSize(775, 650);
 	    frame.createGUI();
 	    frame.setLocationRelativeTo(null);
 	    //frame.setResizable(false); Option to resize the gameGUI window frame
-	    frame.setTitle("MazeGame - CSY1020"); //Title for the game
-		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("greenfoot.png")));
+	    frame.setTitle("CBallMaze – Ball Maze Application"); //Title for the game
+		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("greenfoot.png")));
 	    frame.show();
 	}
 	
@@ -114,20 +117,20 @@ public class gameGUI extends JFrame implements ActionListener
 	    //Icons
 	    try
 	    {
-        	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("step.png")));
-        	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("run.png")));
-        	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("reset.png")));
+        	iconAct = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("step.png")));
+        	iconStart = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("run.png")));
+        	iconReset = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("reset.png")));
         	
         	iconWall = new ImageIcon(((new ImageIcon("images\\\\white32x32.jpg").getImage().getScaledInstance(32, 32,java.awt.Image.SCALE_SMOOTH))));
 
     		//iconWall = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("white32x32.jpg")));
     		
-    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sand.jpg")));
-    		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("sandstone.jpg")));
-    		cNorth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("north.jpg")));
-    		cSouth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("south.jpg")));
-    		cEast = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("east.jpg")));
-    		cWest = new ImageIcon(Toolkit.getDefaultToolkit().createImage(gameGUI.class.getResource("west.jpg")));
+    		iconSand = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("sand.jpg")));
+    		iconSandstone = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("sandstone.jpg")));
+    		cNorth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("north.jpg")));
+    		cSouth = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("south.jpg")));
+    		cEast = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("east.jpg")));
+    		cWest = new ImageIcon(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("west.jpg")));
     		
     		//Reference - https://stackoverflow.com/questions/6714045/how-to-resize-jlabel-imageicon
     		iconBall = new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH))));
@@ -198,123 +201,13 @@ public class gameGUI extends JFrame implements ActionListener
     			numberButton[nCount].setIcon(iconSand);
 	    }
 	    
-	    if(nCount==17)
+	    //Sand blocks	    
+	    if(nCount==17 || nCount==33 || nCount==21 || nCount==37 || nCount==25 || nCount==41 || nCount==66 || nCount==82 || nCount==70 || nCount==86 || nCount==75 || nCount==91 || nCount==113 || nCount==129 || nCount==117 || nCount==133 || nCount==124 || nCount==140 || nCount==162 || nCount==178 || nCount==167 || nCount==183 || nCount>192)
 	    {
     			numberButton[nCount].setIcon(iconSand);
 	    }
-	    
-	    if(nCount==33)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==21)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==37)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==25)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==41)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==66)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==82)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==70)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==86)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==75)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==91)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==113)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==129)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==117)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==133)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==124)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==140)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    ///////////////////////////////////////////
-	    
-	    if(nCount==162)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==178)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==167)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }
-	    
-	    if(nCount==183)
-	    {
-    			numberButton[nCount].setIcon(iconSand);
-	    }	    
-	    
-		if(nCount>192)
-		{
-				numberButton[nCount].setIcon(iconSand);
-		}
-	    
+		
+	    //SandStone
 		if(nCount==192)
 		{
 	    		numberButton[nCount].setIcon(iconSandstone);
@@ -482,9 +375,9 @@ public class gameGUI extends JFrame implements ActionListener
     		directionField.setHorizontalAlignment(JTextField.CENTER);
     		
     		timer.stop();
-    		secsField.setText("0"); 
-    		minsField.setText("0");
-    		hoursField.setText("0");
+    		secsField.setText("00"); 
+    		minsField.setText("00");
+    		hoursField.setText("00");
     	    compassImage.setIcon(cNorth);
     		JOptionPane.showMessageDialog(null, "The game has been reset!","Reset Notification!", JOptionPane.INFORMATION_MESSAGE);
     	}
@@ -574,6 +467,10 @@ public class gameGUI extends JFrame implements ActionListener
 	    		compassImage.setIcon(cNorth); 
 	    		directionField.setText("North");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
+	    		
+	    		numberButton[nBall -16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		nBall = nBall -16;
 	    	}
 	    });
 	    
@@ -590,18 +487,13 @@ public class gameGUI extends JFrame implements ActionListener
 	    leftButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {	///////////////////////////////////////////////////////////////////////////////////////
 	    		System.out.println("Left Button");
-	    		
-	    		//numberButton[nCount] = numberButton[nCount] -1;
-	    		//Start here
-	    		/*if(numberButton[nCount]=iconSand) {
-	    			numberButton[nCount] = nCount--;
-	    		}*/
-	    			
-
-	    		
-	    	    compassImage.setIcon(cWest); 
+	    		compassImage.setIcon(cWest);
 	    		directionField.setText("West");
-	    		directionField.setHorizontalAlignment(JTextField.CENTER);  
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
+	    		
+	    		numberButton[nBall -1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		nBall = nBall -1;
 	    	}
 	    });
 	    
@@ -621,6 +513,10 @@ public class gameGUI extends JFrame implements ActionListener
 	    	    compassImage.setIcon(cEast); 
 	    		directionField.setText("East");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
+
+	    		numberButton[nBall +1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		nBall = nBall +1;
 	    	}
 	    });
 	    
@@ -640,6 +536,10 @@ public class gameGUI extends JFrame implements ActionListener
 	    	    compassImage.setIcon(cSouth); 
 	    		directionField.setText("South");
 	    		directionField.setHorizontalAlignment(JTextField.CENTER);
+	    		
+	    		numberButton[nBall +16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+	    		nBall = nBall +16;
 	    	}
 	    });
 	    
@@ -669,10 +569,14 @@ public class gameGUI extends JFrame implements ActionListener
 	
     public void actionPerformed(ActionEvent e) 
     {
-    hoursField.setText(Integer.toString(ticks / 3600));
-	minsField.setText(Integer.toString(ticks / 60));
-	secsField.setText(Integer.toString(ticks % 60));
+    	DecimalFormat df = new DecimalFormat("##,00");
+    	
+    hoursField.setText(df.format(ticks / 3600));
+	minsField.setText(df.format(ticks / 60));
+	secsField.setText(df.format(ticks % 60));
 	ticks = ticks + 1;
+	//System.out.println(df.format(ticks)); //Outputs the ticks to Console
 	}
+    
     
 }
