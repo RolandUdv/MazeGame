@@ -1,9 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
-
 import javax.swing.*;
-	
+
 public class CBallMaze extends JFrame implements ActionListener 
 {
 	
@@ -362,6 +361,9 @@ public class CBallMaze extends JFrame implements ActionListener
         		
     			nSquare = nSquare -1;
 	    		squareField.setText(Integer.toString(nSquare));
+	    	    compassImage.setIcon(cWest); 
+	    		directionField.setText("West");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
     		}
     		
     		if(nBall==9 || nBall==25 || nBall==41 || nBall==57 || nBall==54 || nBall==70 || nBall==86 || nBall==102 || nBall==101 || nBall==117 || nBall==133 || nBall==149 || nBall==146 || nBall==162 || nBall==178 || nBall==194){
@@ -371,6 +373,9 @@ public class CBallMaze extends JFrame implements ActionListener
         		
     			nSquare = nSquare +16;
 	    		squareField.setText(Integer.toString(nSquare));
+	    	    compassImage.setIcon(cSouth); 
+	    		directionField.setText("South");
+	    		directionField.setHorizontalAlignment(JTextField.CENTER);
     		}
     		
     		if(nBall==192) {
@@ -758,6 +763,8 @@ public class CBallMaze extends JFrame implements ActionListener
     		rightButton.setEnabled(false);
     		leftButton.setEnabled(false);
     		actButton.setEnabled(false);
+    		
+    		//playSound("crowd-cheer.wav");
 		}
 	}
 	
@@ -787,5 +794,5 @@ public class CBallMaze extends JFrame implements ActionListener
 	}*/
 	
 	}
-    
+        
 }//DO NOT REMOVE!
