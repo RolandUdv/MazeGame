@@ -500,11 +500,17 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			numberButton[nBall +16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall +16;
+	    			
+	    			nSquare=nSquare +0;
+	    			squareField.setText(Integer.toString(nSquare));
+	    		}else {
+	    			nSquare = nSquare -161;
+		    		squareField.setText(Integer.toString(nSquare));
 	    		}
 	    		
 	    		//Change Square number field
-	    		nSquare = nSquare -16;
-	    		squareField.setText(Integer.toString(nSquare));
+	    		//nSquare = nSquare -16;
+	    		//squareField.setText(Integer.toString(nSquare));
 	    		endGame();
 	    	}
 	    });
@@ -535,11 +541,17 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			numberButton[nBall +1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall +1;
+
+	    			nSquare=nSquare +0;
+	    			squareField.setText(Integer.toString(nSquare));
+	    		}else {
+	    			nSquare = nSquare -1;
+		    		squareField.setText(Integer.toString(nSquare));
 	    		}
 	    		
 	    		//Change Square number field
-	    		nSquare = nSquare -1;
-	    		squareField.setText(Integer.toString(nSquare));
+	    		//nSquare = nSquare -1;
+	    		//squareField.setText(Integer.toString(nSquare));
 	    		
 	    		endGame();
 	    	}
@@ -571,11 +583,17 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			numberButton[nBall -1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall -1;
+	    			
+	    			nSquare=nSquare +0;
+	    			squareField.setText(Integer.toString(nSquare));
+	    		}else {
+	    			nSquare = nSquare +1;
+		    		squareField.setText(Integer.toString(nSquare));
 	    		}
 	    		
 	    		//Change Square number field
-	    		nSquare = nSquare +1;
-	    		squareField.setText(Integer.toString(nSquare));
+	    		//nSquare = nSquare +1;
+	    		//squareField.setText(Integer.toString(nSquare));
 	    		
 	    		endGame();
 	    	}
@@ -608,11 +626,17 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			numberButton[nBall -16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall -16;
+	    			
+	    			nSquare=nSquare +0;
+	    			squareField.setText(Integer.toString(nSquare));
+	    		}else {
+	    			nSquare = nSquare +16;
+		    		squareField.setText(Integer.toString(nSquare));
 	    		}
 	    			
 		    		//Change Square number field
-		    		nSquare = nSquare +16;
-		    		squareField.setText(Integer.toString(nSquare));
+		    		//nSquare = nSquare +16;
+		    		//squareField.setText(Integer.toString(nSquare));
 		    		
 		    		endGame();
 	    	}
