@@ -46,7 +46,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	
 	//Menu variables
 	private JMenuBar menuBar;
-	private JMenu JMenuControl, JMenuHelp, JMenuScenario, JMenuEdit;
+	private JMenu JMenuControl, JMenuHelp, JMenuScenario, JMenuEdit, jHelp, JMExit;
 	
 	//Slider
 	private JSlider speedSlider;
@@ -155,9 +155,19 @@ public class CBallMaze extends JFrame implements ActionListener
 
 		JMenuControl = new JMenu("Controls");
 		menuBar.add(JMenuControl);
+		
+		JMExit = new JMenu("Exit");
+		JMenuControl.add(JMExit);
+		JMExit.addActionListener(this);
 
 		JMenuHelp = new JMenu("Help");
-		menuBar.add(JMenuHelp); 
+		menuBar.add(JMenuHelp);
+		JMenuHelp.addActionListener(this);
+		
+		jHelp = new JMenu("Help Button");
+		JMenuHelp.add(jHelp);
+		jHelp.addActionListener(this);
+
 	    /*----------JMENU TOP END----------*/
 
 	    //Top, Game panel with the grid
@@ -174,6 +184,7 @@ public class CBallMaze extends JFrame implements ActionListener
 			numberButton[nCount].setIcon(iconWall);
 			numberButton[nCount].setBackground(Color.WHITE);//Added white background to remove the leftover borders
 	    	numberButton[nCount].setBorderPainted(false); //Removes border from grid
+	    	
 			
 	    if(nCount<16)
 	    {
@@ -313,7 +324,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    coordinatePanel.add(optionLabel);
 	    
 	    optionField = new JTextField(2);
-		optionField.setText("-"); //Shows dash on default
+		optionField.setText("Option 1"); //Shows dash on default
 		optionField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(optionField);
 	    
@@ -343,6 +354,30 @@ public class CBallMaze extends JFrame implements ActionListener
 	    actButton.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e) {
     		System.out.println("Act Button");
+    		
+    		if(nBall==15 || nBall==14 || nBall==13 || nBall==12 || nBall==11 || nBall==10 || nBall==57 || nBall==56 || nBall==55 || nBall==54 || nBall==102 || nBall==101 || nBall==149 || nBall==148 || nBall==147 || nBall==146 || nBall==194 || nBall==193 || nBall==192) {
+    			numberButton[nBall -1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+        		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+        		nBall = nBall -1;
+        		
+    			nSquare = nSquare -1;
+	    		squareField.setText(Integer.toString(nSquare));
+    		}
+    		
+    		if(nBall==9 || nBall==25 || nBall==41 || nBall==57 || nBall==54 || nBall==70 || nBall==86 || nBall==102 || nBall==101 || nBall==117 || nBall==133 || nBall==149 || nBall==146 || nBall==162 || nBall==178 || nBall==194){
+    			numberButton[nBall +16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+        		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+        		nBall = nBall +16;
+        		
+    			nSquare = nSquare +16;
+	    		squareField.setText(Integer.toString(nSquare));
+    		}
+    		
+    		if(nBall==192) {
+    			endGame();
+    		}
+    			
+    		
     	}
     });
 	    
@@ -359,6 +394,9 @@ public class CBallMaze extends JFrame implements ActionListener
     		
     		ticks=0;
         	timer.start();
+        	
+    		optionField.setText("Option 1");
+    		optionField.setHorizontalAlignment(JTextField.CENTER);
         	
     		resetButton.setEnabled(true);
     		//optionButton1.setEnabled(true);
@@ -536,7 +574,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			nSquare=nSquare +0;
 	    			squareField.setText(Integer.toString(nSquare));
 	    		}else {
-	    			nSquare = nSquare -161;
+	    			nSquare = nSquare -16;
 		    		squareField.setText(Integer.toString(nSquare));
 	    		}
 	    		
@@ -733,12 +771,21 @@ public class CBallMaze extends JFrame implements ActionListener
 	ticks = ticks + 1;
 	//System.out.println(df.format(ticks)); //Outputs the ticks to Console
 	
-		/*Object source = e.getSource();
-			if(source==JMenuHelp){
-				System.out.println("Help Button");
-	    		JOptionPane.showMessageDialog(null, "This is a great game","Help Guide", JOptionPane.INFORMATION_MESSAGE);
-			}*/
+	
+	/*Object source = e.getSource();
+	if(source==jHelp){
+		System.out.println("Help Button");
+
+		//ImageIcon icon = new ImageIcon(((new ImageIcon("images\\icon.jpg").getImage().getScaledInstance(100, 100,java.awt.Image.SCALE_SMOOTH))));
+
+		JOptionPane.showMessageDialog(null, "CBallMaze - Ball Maze Application ", "CBallMaze", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	if((source == exitButton)||(source == JMExit)){
+		//System.out.println("Exit Button");
+		System.exit(0);
+	}*/
+	
 	}
     
-    
-}
+}//DO NOT REMOVE!
