@@ -322,7 +322,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    coordinatePanel.add(squareLabel);
 	    
 	    squareField = new JTextField(2);
-	    squareField.setText("-"); //Shows dash on default
+	    squareField.setText(Integer.toString(nBall)); //Shows dash on default
 	    squareField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(squareField);
 	    
@@ -471,6 +471,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    		numberButton[nBall -16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		nBall = nBall -16;
+	    		endGame();
 	    	}
 	    });
 	    
@@ -494,6 +495,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    		numberButton[nBall -1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		nBall = nBall -1;
+	    		endGame();
 	    	}
 	    });
 	    
@@ -517,6 +519,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    		numberButton[nBall +1].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		nBall = nBall +1;
+	    		endGame();
 	    	}
 	    });
 	    
@@ -540,6 +543,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    		numberButton[nBall +16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		nBall = nBall +16;
+	    		endGame();
 	    	}
 	    });
 	    
@@ -567,6 +571,16 @@ public class CBallMaze extends JFrame implements ActionListener
 		squareField.setHorizontalAlignment(JTextField.CENTER);
 	}*/
 	
+	public void endGame()
+	{	
+		
+		if(nBall == 192)
+		{   
+			JOptionPane.showMessageDialog(null, "Congratulations, You've finished the game!","You Won!", JOptionPane.INFORMATION_MESSAGE);
+			System.out.println("You've finished the game!");
+		}
+	}
+	
     public void actionPerformed(ActionEvent e) 
     {
     	DecimalFormat df = new DecimalFormat("##,00");
@@ -576,6 +590,12 @@ public class CBallMaze extends JFrame implements ActionListener
 	secsField.setText(df.format(ticks % 60));
 	ticks = ticks + 1;
 	//System.out.println(df.format(ticks)); //Outputs the ticks to Console
+	
+		/*Object source = e.getSource();
+			if(source==JMenuHelp){
+				System.out.println("Help Button");
+	    		JOptionPane.showMessageDialog(null, "This is a great game","Help Guide", JOptionPane.INFORMATION_MESSAGE);
+			}*/
 	}
     
     
