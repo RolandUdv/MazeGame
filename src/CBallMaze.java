@@ -29,9 +29,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	private JButton optionButton3;
 	private JButton compassImage;
 	
-	//private JButton gridButton[][] = new JButton[13][16];
 	private JButton[] numberButton = new JButton[208];
-	//private int xBall = 0, yBall = 15, nBall = 15;
 	private int nBall = 15;
 	private int nGoal = 192;
 	private int nSquare = 15;
@@ -355,6 +353,22 @@ public class CBallMaze extends JFrame implements ActionListener
 	    startButton.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e) {
     		System.out.println("Start Button");
+    		hoursField.setText("00");
+    		minsField.setText("00");
+    		secsField.setText("00");
+    		
+    		ticks=0;
+        	timer.start();
+        	
+    		resetButton.setEnabled(true);
+    		//optionButton1.setEnabled(true);
+    		//optionButton2.setEnabled(true);
+    		//optionButton3.setEnabled(true);
+    		upButton.setEnabled(true);
+    		downButton.setEnabled(true);
+    		rightButton.setEnabled(true);
+    		leftButton.setEnabled(true);
+    		actButton.setEnabled(true);
     	}
     });
 	    
@@ -402,7 +416,16 @@ public class CBallMaze extends JFrame implements ActionListener
     	    compassImage.setIcon(cNorth);
     		JOptionPane.showMessageDialog(null, "The game has been reset!","Reset Notification!", JOptionPane.INFORMATION_MESSAGE);
     		System.out.println("The game has been reset!");
-
+    		resetButton.setEnabled(false);
+    		//optionButton1.setEnabled(false);
+    		//optionButton2.setEnabled(false);
+    		//optionButton3.setEnabled(false);
+    		upButton.setEnabled(false);
+    		downButton.setEnabled(false);
+    		rightButton.setEnabled(false);
+    		leftButton.setEnabled(false);
+    		actButton.setEnabled(false);
+    		startButton.setEnabled(true);
     	}
     });
 	    
@@ -467,7 +490,16 @@ public class CBallMaze extends JFrame implements ActionListener
 	    exitButton.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Exit button");
-	    		System.exit(0);
+	    		//System.exit(0);
+	    		
+	    		//Reference - https://stackoverflow.com/questions/21330682/confirmation-before-press-yes-to-exit-program-in-java
+	    		int confirmed = JOptionPane.showConfirmDialog(null, 
+	    		        "Are you sure you want to exit the game?", "CBallMaze – Ball Maze Application",
+	    		        JOptionPane.YES_NO_OPTION);
+
+	    		    if (confirmed == JOptionPane.YES_OPTION) {
+	    		      dispose();
+	    		    }
 	    	}
 	    });
 	    
@@ -671,12 +703,23 @@ public class CBallMaze extends JFrame implements ActionListener
 		
 		if(nBall == 192)
 		{   
+			timer.stop();
 			JOptionPane.showMessageDialog(null, "Congratulations, You've finished the game!","You Won!", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("You've finished the game!");
 			//numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 			
 			//Leaves Sandstone on 192 and doesn't remove it
     		numberButton[nGoal].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+    		//disable reset button
+    		startButton.setEnabled(false);
+    		//optionButton1.setEnabled(false);
+    		//optionButton2.setEnabled(false);
+    		//optionButton3.setEnabled(false);
+    		upButton.setEnabled(false);
+    		downButton.setEnabled(false);
+    		rightButton.setEnabled(false);
+    		leftButton.setEnabled(false);
+    		actButton.setEnabled(false);
 		}
 	}
 	
