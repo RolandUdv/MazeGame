@@ -33,6 +33,8 @@ public class CBallMaze extends JFrame implements ActionListener
 	private JButton[] numberButton = new JButton[208];
 	//private int xBall = 0, yBall = 15, nBall = 15;
 	private int nBall = 15;
+	private int nGoal = 192;
+	private int nSquare = 15;
 	
 	private JButton upButton;
 	private JButton downButton;
@@ -322,7 +324,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    coordinatePanel.add(squareLabel);
 	    
 	    squareField = new JTextField(2);
-	    squareField.setText(Integer.toString(nBall)); //Shows dash on default
+	    squareField.setText(Integer.toString(nSquare)); //Shows dash on default
 	    squareField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(squareField);
 	    
@@ -330,7 +332,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    directionLabel.setFont(new Font ("Arial", Font.BOLD, 14));
 	    coordinatePanel.add(directionLabel);
 	    
-	    directionField = new JTextField(2);
+	    directionField = new JTextField(3);
 	    directionField.setText("-"); //Shows dash on default
 	    directionField.setHorizontalAlignment(JTextField.CENTER); //Centered by default on startup
         coordinatePanel.add(directionField);
@@ -379,8 +381,14 @@ public class CBallMaze extends JFrame implements ActionListener
     		nBall=15;
     		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
     		
+    		//Leaves Sandstone on 192 and doesn't remove it
+    		numberButton[nGoal].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+    		
     		optionField.setText("-");
-    		squareField.setText("-");
+    		
+    		nSquare=15;
+    		squareField.setText("15");
+    		
     		directionField.setText("-");
     		
     		optionField.setHorizontalAlignment(JTextField.CENTER);
@@ -394,10 +402,7 @@ public class CBallMaze extends JFrame implements ActionListener
     	    compassImage.setIcon(cNorth);
     		JOptionPane.showMessageDialog(null, "The game has been reset!","Reset Notification!", JOptionPane.INFORMATION_MESSAGE);
     		System.out.println("The game has been reset!");
-    		if(nBall == 192)
-    		{   
-    			numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
-    		}
+
     	}
     });
 	    
@@ -497,6 +502,9 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			nBall = nBall +16;
 	    		}
 	    		
+	    		//Change Square number field
+	    		nSquare = nSquare -16;
+	    		squareField.setText(Integer.toString(nSquare));
 	    		endGame();
 	    	}
 	    });
@@ -528,6 +536,10 @@ public class CBallMaze extends JFrame implements ActionListener
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall +1;
 	    		}
+	    		
+	    		//Change Square number field
+	    		nSquare = nSquare -1;
+	    		squareField.setText(Integer.toString(nSquare));
 	    		
 	    		endGame();
 	    	}
@@ -561,6 +573,10 @@ public class CBallMaze extends JFrame implements ActionListener
 	    			nBall = nBall -1;
 	    		}
 	    		
+	    		//Change Square number field
+	    		nSquare = nSquare +1;
+	    		squareField.setText(Integer.toString(nSquare));
+	    		
 	    		endGame();
 	    	}
 	    });
@@ -585,7 +601,7 @@ public class CBallMaze extends JFrame implements ActionListener
 	    		numberButton[nBall +16].setIcon(new ImageIcon(((new ImageIcon("images\\sand60x60.png").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sand.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    		nBall = nBall +16;
-	    		endGame();
+	    		
 	    		
 	    		if(nBall==16 || nBall==18 || nBall==19 || nBall==20 || nBall==20 || nBall==22 || nBall==23 || nBall==24 || nBall==26 || nBall==27 || nBall==28 || nBall==29 || nBall==30 || nBall==31 || nBall==32 || nBall==34 || nBall==35 || nBall==36 || nBall==38 || nBall==39 || nBall==40 || nBall==42 || nBall==43 || nBall==44 || nBall==45 || nBall==46 || nBall==47 || nBall==64 || nBall==65 || nBall==67 || nBall==68 || nBall==69 || nBall==71 || nBall==72 || nBall==73 || nBall==74 || nBall==76 || nBall==77 || nBall==78 || nBall==79 || nBall==80 || nBall==81 || nBall==83 || nBall==84 || nBall==84 || nBall==85 || nBall==87 || nBall==88 || nBall==89 || nBall==90 || nBall==92 || nBall==93 || nBall==94 || nBall==95 || nBall==112 || nBall==114 || nBall==115 || nBall==116 || nBall==118 || nBall==119 || nBall==120 || nBall==121 || nBall==122 || nBall==123 || nBall==125 || nBall==126 || nBall==127 || nBall==128 || nBall==130 || nBall==131 || nBall==132 || nBall==134 || nBall==135 || nBall==136 || nBall==137 || nBall==138 || nBall==139 || nBall==141 || nBall==142 || nBall==143 || nBall==160 || nBall==161|| nBall==163 || nBall==164 || nBall==165 || nBall==166 || nBall==168 || nBall==169 || nBall==170 || nBall==171 || nBall==172 || nBall==173 || nBall==174 || nBall==175 || nBall==176 || nBall==177 || nBall==179 || nBall==180 || nBall==181 || nBall==182 || nBall==184 || nBall==185 || nBall==186 || nBall==187 || nBall==188 || nBall==189 || nBall==190 || nBall==191) {
 	    			System.out.println("Unable to move there");
@@ -593,6 +609,12 @@ public class CBallMaze extends JFrame implements ActionListener
 		    		numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\white32x32.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 	    			nBall = nBall -16;
 	    		}
+	    			
+		    		//Change Square number field
+		    		nSquare = nSquare +16;
+		    		squareField.setText(Integer.toString(nSquare));
+		    		
+		    		endGame();
 	    	}
 	    });
 	    
@@ -627,7 +649,10 @@ public class CBallMaze extends JFrame implements ActionListener
 		{   
 			JOptionPane.showMessageDialog(null, "Congratulations, You've finished the game!","You Won!", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("You've finished the game!");
-			numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+			//numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
+			
+			//Leaves Sandstone on 192 and doesn't remove it
+    		numberButton[nGoal].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 		}
 	}
 	
