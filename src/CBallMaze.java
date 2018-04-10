@@ -78,7 +78,6 @@ public class CBallMaze extends JFrame implements ActionListener
 	private JLabel secsLabel, minsLabel, hoursLabel, timerLabel;
 	private int ticks = 0;
 	private Timer timer;
-	
 	//Option variables
 	private JLabel optionLabel, squareLabel, directionLabel;
 	private JTextField optionField, squareField, directionField;
@@ -91,8 +90,8 @@ public class CBallMaze extends JFrame implements ActionListener
 	    CBallMaze frame = new CBallMaze();
 	    frame.setSize(775, 650);
 	    frame.createGUI();
-	    frame.setLocationRelativeTo(null);
-	    //frame.setResizable(false); Option to resize the gameGUI window frame
+	    frame.setLocationRelativeTo(null); //Game windows appears in center
+	    frame.setResizable(false); //Disables the option to resize the game window frame
 	    frame.setTitle("CBallMaze – Ball Maze Application"); //Title for the game
 		frame.setIconImage(Toolkit.getDefaultToolkit().createImage(CBallMaze.class.getResource("greenfoot.png")));
 	    frame.show();
@@ -747,7 +746,10 @@ public class CBallMaze extends JFrame implements ActionListener
 		if(nBall == 192)
 		{   
 			timer.stop();
-			JOptionPane.showMessageDialog(null, "Congratulations, You've finished the game!","You Won!", JOptionPane.INFORMATION_MESSAGE);
+			
+			ticks=ticks-1; //Takes away 1 second from second results to match data from 'secsField'
+			JOptionPane.showMessageDialog(null, "Congratulations, You've finished the game in: " + ticks + " seconds!\n"
+					+ "Press 'Reset' and 'Start' to play again!" ,"You Win!", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("You've finished the game!");
 			//numberButton[nBall].setIcon(new ImageIcon(((new ImageIcon("images\\sandstone.jpg").getImage().getScaledInstance(41, 41,java.awt.Image.SCALE_SMOOTH)))));
 			
