@@ -14,7 +14,8 @@ public class CBallMaze extends JFrame implements ActionListener
 	* Module:	CSY1020 Problem Solving & Programming		  *
 	* Tutor: 	Gary Hill									  *	
 	* @version:	1.0											  *
-	* Date:		27/03/2018									  *
+	* Date:		27/03/2018
+	* Github:	https://github.com/RolandUdv/MazeGame		  *
 	***********************************************************/
 	
     /*----------------------------------------VARIABELS START----------------------------------------*/
